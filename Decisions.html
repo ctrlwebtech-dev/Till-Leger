@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 3: Artificial Intelligence and Decision Support Systems · Till &amp; Ledger</title>
+<meta name="description" content="This section highlights the 5 stages of analytics maturity, the distinction between internal and external DSS data sources, the importance of balancing algorithmic systems and human retail intuition, and the 4-step decision-making process by Herbert Simon for inventory control.">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/broadsheet.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/decisions.css">
+</head>
+<body>
+<div class="page" data-page>
+
+<nav class="site-nav" aria-label="Main">
+  <a class="brand" href="Till and Ledger.html">Till <span>&amp;</span> Ledger</a>
+  <div class="links">
+    <a href="Data.html"><small>01</small>Data</a>
+    <a href="POPIA.html"><small>02</small>POPIA</a>
+    <a href="Decisions.html" aria-current="page"><small>03</small>Decisions</a>
+    <a href="Systems.html"><small>04</small>Systems</a>
+    <a href="Customise.html"><small>05</small>Customise</a>
+    <a href="Sources.html">Sources</a>
+  </div>
+</nav>
+
+<main>
+<header class="hero gutter">
+  <div class="float order" aria-hidden="true" data-depth="0.7" data-rot="5" data-speed="0.3" style="--top:16vh;right:9vw"><b>300 units</b><span>the next long weekend rush</span></div>
+  <div class="float rain" aria-hidden="true" data-depth="1.4" data-rot="-7" data-speed="0.6" style="--top:64vh;right:28vw">cold and rainy Fridays</div>
+  <div class="float note" aria-hidden="true" data-depth="1.8" data-rot="9" data-speed="0.9" style="--top:58vh;right:7vw">strikes from their workers</div>
+  <h1>
+    <span class="mask"><span data-line="0">Topic 3:</span></span>
+    <span class="mask"><span data-line="1">Artificial Intelligence</span></span>
+    <span class="mask"><span data-line="2" class="it">and Decision Support Systems</span></span>
+  </h1>
+  <p class="lede" data-reveal="1">This section highlights the 5 stages of analytics maturity, the distinction between internal and external DSS data sources, the importance of balancing algorithmic systems and human retail intuition, and the 4-step decision-making process by Herbert Simon for inventory control.</p>
+</header>
+
+<section id="ladder" class="ladder" data-pin="5" aria-labelledby="ladder-h">
+  <div class="stage gutter">
+    <div class="intro">
+      <h2 id="ladder-h">The Analytics <span class="it">Maturity Ladder</span></h2>
+      <p>By upgrading from paper and spreadsheet-based record keeping to an information system, a small retail company can climb the Analytics Maturity Ladder. Each tier provides strategic benefits, progressing from backward-focused reporting to automated recommendations as follows:</p>
+      <div class="rungs" aria-hidden="true">
+        <div class="rung"><span>Descriptive Analytics</span><span class="bar"><span data-rung="0"></span></span></div>
+        <div class="rung"><span>Diagnostic Analytics</span><span class="bar"><span data-rung="1"></span></span></div>
+        <div class="rung"><span>Discovery Analytics</span><span class="bar"><span data-rung="2"></span></span></div>
+        <div class="rung"><span>Predictive Analytics</span><span class="bar"><span data-rung="3"></span></span></div>
+        <div class="rung"><span>Prescriptive Analytics</span><span class="bar"><span data-rung="4"></span></span></div>
+      </div>
+    </div>
+    <div class="tiers">
+      <div class="num" aria-hidden="true"><div class="cmyk-num"><span class="paper" data-num>1</span><span class="plate plate-c" data-num>1</span><span class="plate plate-m" data-num>1</span><span class="plate plate-y" data-num>1</span></div></div>
+      <ul>
+        <li class="tier" data-step="0"><h3><span class="dot" aria-hidden="true">•</span>Descriptive Analytics <span class="q">(What Happened?):</span></h3><p>This involves the gathering of historical data about transactions using the Point-of-Sale (POS) system. For instance, creating an end-of-the-week sales report, which indicates that 150 units of organic coffee beans were sold.</p></li>
+        <li class="tier" data-step="1"><h3><span class="dot" aria-hidden="true">•</span>Diagnostic Analytics <span class="q">(Why Did It Happen?):</span></h3><p>Examines the relationship of the data to discover the causes behind performance patterns. For example, matching sales records with weather and calendar information to determine that cold and rainy Fridays lead to a 35% increase in the sale of warm beverages.</p></li>
+        <li class="tier" data-step="2"><h3><span class="dot" aria-hidden="true">•</span>Discovery Analytics <span class="q">(What Patterns Exist?):</span></h3><p>Makes use of pattern recognition to discover unexpected consumer behaviour without any previous assumptions about it. For instance, discovering that consumers who purchase specialized baking flour on Saturdays almost always buy premium butter with it.</p></li>
+        <li class="tier" data-step="3"><h3><span class="dot" aria-hidden="true">•</span>Predictive Analytics <span class="q">(What Will Happen?):</span></h3><p>Uses forecasting models based on statistical analyses of past trends and seasonality to forecast future demand. For example, predicting that there will be a requirement for 300 units of coffee beans during the next long weekend rush.</p></li>
+        <li class="tier" data-step="4"><h3><span class="dot" aria-hidden="true">•</span>Prescriptive Analytics <span class="q">(What Action Should We Take?):</span></h3><p>Uses algorithms and business logic to make automated optimal business decisions. For instance, automatically generating a purchase order to the supplier of coffee at a reduced price and setting the pricing of slow-moving products on shelves.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="dss gutter" data-converge="1" aria-labelledby="dss-h">
+  <div class="section-head" data-reveal="1">
+    <h2 id="dss-h">Decision <span class="it">Support Systems</span></h2>
+    <p>A Decision Support Systems (DSS) refers to an interactive information system meant to assist management in decision-making concerning complicated but unstructured problems.</p>
+    <p>For its results to be accurate a retail DSS requires two types of data inputs; the first being <b class="in">Internal Data Input</b> which includes real-time data arising from inside the business activities like point-of-sale transaction data, stock room data, past sales data, and cost of purchase by suppliers. And the second being <b class="ex">External Data Input</b> which includes data feed arising from the environment external to the business such as weather conditions, public school holidays, road closures in the area, and competitor pricing.</p>
+  </div>
+  <div class="flow" aria-hidden="true">
+    <div class="side left">
+      <span class="label">Internal Data Input</span>
+      <span class="src" data-src="L">point-of-sale transaction data</span>
+      <span class="src" data-src="L">stock room data</span>
+      <span class="src" data-src="L">past sales data</span>
+      <span class="src" data-src="L">cost of purchase by suppliers</span>
+    </div>
+    <div class="hub" data-dss="1"><span>DSS</span></div>
+    <div class="side right">
+      <span class="label">External Data Input</span>
+      <span class="src" data-src="R">weather conditions</span>
+      <span class="src" data-src="R">public school holidays</span>
+      <span class="src" data-src="R">road closures in the area</span>
+      <span class="src" data-src="R">competitor pricing</span>
+    </div>
+  </div>
+</section>
+
+<section class="human gutter" aria-labelledby="human-h">
+  <div class="section-head" data-reveal="1">
+    <h2 id="human-h">Balancing Algorithmic Systems <span class="it">with Human Retail Intuition</span></h2>
+    <p>Whereas the DSS can crunch numbers much more quickly than a person can, it is meant to assist the retail manager rather than replace them. Recommendations made by the analysis of data should go together with human traits such as;</p>
+  </div>
+  <ul class="traits">
+    <li class="card elev-lg" data-reveal="1"><b>qualitative knowledge about suppliers</b> an example being whether an old, local supplier has any current issues going on at their place such as strikes from their workers or factory work.</li>
+    <li class="card elev-lg" data-reveal="1"><b>Ethics and community considerations</b> like not price gouging when there are shortages in the area or severe weather situations.</li>
+    <li class="card elev-lg" data-reveal="1">And <b>human customer interactions</b> like personal interactions between the customers and the business.</li>
+  </ul>
+</section>
+
+<section class="simon gutter" aria-labelledby="simon-h">
+  <div class="section-head" data-reveal="1">
+    <h2 id="simon-h">Herbert Simon’s <span class="it">Decision-Making Process</span></h2>
+    <p>For demonstration purposes, to showcase how a DSS operates in a retail environment, we will consider how to avoid stockouts during the holiday season:</p>
+  </div>
+  <ol class="phases">
+    <li class="phase" data-reveal="1"><span class="n">Step 1.</span><div><h3>The Intelligence Phase <span class="it">(Identifying Problem):</span></h3><p>This system scans the current stock level and identifies an anomaly, stock levels for profitable seasonal gift baskets are going down 40% faster than expected, hence, there is an impending threat of stockout.</p></div></li>
+    <li class="phase" data-reveal="1"><span class="n">Step 2.</span><div><h3>The Design Phase <span class="it">(Identifying Alternatives):</span></h3><p>The DSS proposes three possible alternatives:</p>
+      <ul class="choices">
+        <li class="choice" data-choice="A"><span class="id">Choice A:</span> <span>Placing an emergency order from Supplier 1 (Expensive, but quick delivery within 24 hours).</span></li>
+        <li class="choice" data-choice="B"><span class="id">Choice B:</span> <span>Placing an order from Supplier 2 (Least expensive, but a four-day delay).</span></li>
+        <li class="choice" data-choice="C"><span class="id">Choice C:</span> <span>Transferring the available gift basket stock from a slow sister store.</span></li>
+      </ul>
+    </div></li>
+    <li class="phase" data-reveal="1" data-picks="C"><span class="n">Step 3.</span><div><h3>The Choice Phase <span class="it">(Choosing among Alternatives):</span></h3><p>After reviewing the benefits and disadvantages of each alternative proposed by DSS, the manager would accept Choice C to avoid expensive transportation charges as well as to meet customer demands before the end of the week.</p></div></li>
+    <li class="phase" data-reveal="1"><span class="n">Step 4.</span><div><h3>The Implementation Phase <span class="it">(Implementation):</span></h3><p>The store manager approves the transfer process in the system. This DSS modifies inventory levels in both stores and analyses the speed of sales in the next 48 hours to ensure the problem is solved.</p></div></li>
+  </ol>
+</section>
+
+<section class="pedagogy gutter" aria-labelledby="ped-h">
+  <div class="section-head" data-reveal="1">
+    <h2 id="ped-h">Design and Pedagogy <span class="it">of Reasoning</span></h2>
+    <p>Many small business owners often regard Artificial Intelligence and Business Analytics as complicated subjects meant for only big organizations. We developed this material in such a way that it demystifies AI and introduces the Analytics Maturity Ladder that explains how business owners can leverage from this technology right from the start. Our DSS explanation is based on Herbert Simon’s four-phase decision-making process, which shows the practical application of integrating internal and environmental factors in overcoming one of the biggest problems faced by small retail business owners – no need for inventory guesswork.</p>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="pager">
+    <a href="POPIA.html"><span class="dir">← Previous</span><span class="label">Topic 2: Data Ethics, Privacy and Compliance with POPIA</span></a>
+    <a class="next" href="Systems.html"><span class="dir">Next →</span><span class="label">Topic 4: Enterprise Systems and Integration Issues</span></a>
+  </div>
+  <div class="colophon">
+    <span>Till &amp; Ledger · INF1781 · Group A · 2026</span>
+    <a href="Sources.html">References</a>
+  </div>
+</footer>
+
+</div>
+
+<script src="assets/motion.js"></script>
+<script src="assets/decisions.js"></script>
+</body>
+</html>

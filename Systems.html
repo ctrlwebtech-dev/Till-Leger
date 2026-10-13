@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 4: Enterprise Systems and Integration Issues · Till &amp; Ledger</title>
+<meta name="description" content="Integrating a cloud system automates many daily retail operations.">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/broadsheet.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/systems.css">
+</head>
+<body>
+<div class="page" data-page>
+
+<nav class="site-nav" aria-label="Main">
+  <a class="brand" href="Till and Ledger.html">Till <span>&amp;</span> Ledger</a>
+  <div class="links">
+    <a href="Data.html"><small>01</small>Data</a>
+    <a href="POPIA.html"><small>02</small>POPIA</a>
+    <a href="Decisions.html"><small>03</small>Decisions</a>
+    <a href="Systems.html" aria-current="page"><small>04</small>Systems</a>
+    <a href="Customise.html"><small>05</small>Customise</a>
+    <a href="Sources.html">Sources</a>
+  </div>
+</nav>
+
+<main>
+<header class="hero gutter">
+  <div class="float" aria-hidden="true" data-depth="0.6" data-rot="-6" data-speed="0.3" style="--top:16vh;right:10vw">POS cash registers</div>
+  <div class="float" aria-hidden="true" data-depth="1.1" data-rot="5" data-speed="0.55" style="--top:30vh;right:30vw">accounting systems</div>
+  <div class="float" aria-hidden="true" data-depth="1.5" data-rot="-3" data-speed="0.8" style="--top:46vh;right:12vw">inventory databases</div>
+  <div class="float doubt" aria-hidden="true" data-depth="1.9" data-rot="8" data-speed="1" style="--top:20vh;right:54vw">double entries</div>
+  <h1>
+    <span class="mask"><span data-line="0">Topic 4:</span></span>
+    <span class="mask"><span data-line="1">Enterprise Systems</span></span>
+    <span class="mask"><span data-line="2" class="it">and Integration Issues</span></span>
+  </h1>
+</header>
+
+<section class="integration gutter" aria-labelledby="integration-h">
+  <div class="integration-head" data-reveal="1">
+    <div class="section-head">
+      <h2 id="integration-h">POS Cloud System <span class="it">Integration</span></h2>
+      <p>Integrating a cloud system automates many daily retail operations. A modern POS terminal connected directly to the cloud eliminates the need for manual data entry, and operations like keeping track of storage or accounting for books.</p>
+    </div>
+    <div class="seg" role="group" aria-labelledby="integration-h">
+      <button type="button" class="seg-opt" data-hover="1" data-mode="0" aria-pressed="true">separate systems</button>
+      <button type="button" class="seg-opt" data-hover="1" data-mode="1" aria-pressed="false">Integrated</button>
+    </div>
+  </div>
+  <div class="diag" data-diag="1" data-reveal="1" aria-hidden="true">
+    <svg data-wires="1" aria-hidden="true">
+      <line data-wire="0" stroke-width="1.5"></line><circle data-pulse="0" r="4"></circle>
+      <line data-wire="1" stroke-width="1.5"></line><circle data-pulse="1" r="4"></circle>
+      <line data-wire="2" stroke-width="1.5"></line><circle data-pulse="2" r="4"></circle>
+      <line data-wire="3" stroke-width="1.5"></line><circle data-pulse="3" r="4"></circle>
+      <line data-wire="4" stroke-width="1.5"></line><circle data-pulse="4" r="4"></circle>
+      <line data-wire="5" stroke-width="1.5"></line><circle data-pulse="5" r="4"></circle>
+    </svg>
+    <div class="hub" data-hub="1"><b>Cloud</b><span>SaaS</span></div>
+    <ul class="nodes">
+      <li class="node" data-node="0">POS terminal</li>
+      <li class="node" data-node="1">available stock</li>
+      <li class="node" data-node="2">accounting systems</li>
+      <li class="node" data-node="3">daily sales</li>
+      <li class="node" data-node="4">card or cash payments</li>
+      <li class="node" data-node="5">branches</li>
+    </ul>
+  </div>
+</section>
+
+<section class="process gutter" aria-labelledby="process-h">
+  <div class="section-head" data-reveal="1">
+    <h2 id="process-h">The <span class="it">Integrated Process</span></h2>
+  </div>
+  <div class="process-lines">
+    <p data-reveal="1">When a transaction takes place and an item is scanned and paid for, the POS system will automatically subtract that item from the total stock available.</p>
+    <p data-reveal="1">This keeps track of available stock.</p>
+    <p data-reveal="1">The POS system also keeps track of all the daily sales and needed calculations like card or cash payments; there is no need to manually punch in numbers before closing the store.</p>
+  </div>
+</section>
+
+<section class="compare gutter" aria-labelledby="compare-h">
+  <div class="section-head" data-reveal="1">
+    <h2 id="compare-h">Physical Servers (On premises) vs. <span class="it">Cloud Software (SaaS)</span></h2>
+  </div>
+  <div class="table-wrap" data-reveal="1">
+    <table class="compare-table">
+      <thead>
+        <tr><th scope="col">Option</th><th scope="col">Physical (On premises)</th><th scope="col">Cloud (SaaS)</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Upfront Cost</th><td><b>Very High:</b> Need to buy all physical hardware needed like server and cables.</td><td><b>Low:</b> No physical server needed, runs on most devices.</td></tr>
+        <tr><th scope="row">Monthly Cost</th><td><b>High/medium:</b> Expensive electricity bills, but low monthly subscription fees.</td><td><b>Predictable:</b> Pay a fixed monthly fee per device.</td></tr>
+        <tr><th scope="row">Maintenance</th><td><b>Hard:</b> Need an IT expert to handle server crashes, and to update software.</td><td><b>Easy:</b> The hosting company handles everything for you like updates and security.</td></tr>
+        <tr><th scope="row">Scalability</th><td><b>Slow and costly:</b> Opening another network means going through the whole process all over again like buying and setting the hardware up again.</td><td><b>Fast and Easy:</b> Opening the software to a new store will only take a few online clicks.</td></tr>
+        <tr><th scope="row">Reliability</th><td><b>Risky:</b> If the server breaks or gets stolen the whole system stops working until the problem is fixed.</td><td><b>High:</b> Everything is stored online, so data is safe and secure even if hardware fails.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="verdict" data-reveal="1">SaaS (Cloud based) tends to be less of a financial burden to the user because the need for expensive hardware is not needed, only a pay as you go software licence. SaaS is also a better option for scalability, since no high-level IT experience is required to be able to add devices to the network, or even add other branches. It is clear for a small business that is trying to grow that SaaS is a better option than a physical on site server, since there is less capital involved and is much easier to scale with minimal effort.</p>
+</section>
+
+<section class="pedagogy gutter" aria-labelledby="pedagogy-h">
+  <h2 id="pedagogy-h" data-reveal="1">Design and Pedagogy <span class="it">of Reasoning</span></h2>
+  <div class="pedagogy-grid">
+    <p data-reveal="1">Numerous small businesses have difficulty with "isolated” systems, where POS cash registers, accounting systems, and inventory databases are separate systems that run independently of each other, causing double entries and discrepancies in inventory.</p>
+    <p data-reveal="1">This topic was designed in such a way as to facilitate SME owners in putting together the necessary enterprise functions.</p>
+    <p data-reveal="1">We assist decision-makers in comparing the deployment models of Cloud (SaaS) and On-Premises by weighing initial investment versus ongoing maintenance.</p>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="pager">
+    <a href="Decisions.html"><span class="dir">← Previous</span><span class="label">Topic 3: Artificial Intelligence and Decision Support Systems</span></a>
+    <a class="next" href="Customise.html"><span class="dir">Next →</span><span class="label">Topic 5: Modification of Information Systems</span></a>
+  </div>
+  <div class="colophon">
+    <span>Till &amp; Ledger · INF1781 · Group A · 2026</span>
+    <a href="Sources.html">References</a>
+  </div>
+</footer>
+
+</div>
+
+<script src="assets/motion.js"></script>
+<script src="assets/systems.js"></script>
+</body>
+</html>

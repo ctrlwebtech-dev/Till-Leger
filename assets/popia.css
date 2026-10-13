@@ -1,0 +1,99 @@
+/* POPIA page: hero stamps, principles, pinned horizontal track, access rows. */
+
+/* Hero */
+.hero h1 { font-size: clamp(44px, 6.6vw, 116px); }
+.hero .stamp, .hero .form { position: absolute; top: var(--top); }
+.hero .stamp {
+  width: 150px; height: 150px; border-radius: 50%; border: 2px solid var(--color-accent-2);
+  color: var(--color-accent-2-700); display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; gap: 2px; font-size: 12px; letter-spacing: .12em; line-height: 1.3;
+}
+.hero .stamp span:first-child { font-weight: 600; }
+.hero .stamp .it { font-size: 22px; letter-spacing: 0; }
+.hero .form {
+  width: 250px; padding: var(--space-4); background: var(--color-neutral-100); box-shadow: var(--shadow-lg);
+  display: flex; flex-direction: column; gap: 6px; font-size: 14px;
+}
+.hero .form-title { font-weight: 600; font-size: 16px; }
+.hero .form .row { display: flex; justify-content: space-between; gap: var(--space-3); }
+.hero .form .ok { color: var(--color-accent-700); }
+.hero .form .no { text-decoration: line-through; color: var(--color-neutral-600); }
+.hero .float.ink { background: var(--color-text); color: var(--color-bg); font-size: 14px; box-shadow: none; }
+.js .hero .stamp, .js .hero .form, .js .hero .float { opacity: 0; }
+
+/* Data Ethics and POPIA: three principles */
+.principles { padding-top: clamp(60px, 10vh, 120px); padding-bottom: clamp(60px, 10vh, 120px); display: flex; flex-direction: column; gap: var(--space-8); }
+.facts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: var(--space-8) var(--space-6); }
+.facts li { display: flex; flex-direction: column; gap: var(--space-2); }
+.facts .big { font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -.02em; color: var(--color-accent-2-700); }
+.facts .text { font-size: 18px; line-height: 1.5; max-width: 34ch; text-wrap: pretty; }
+.dot { color: var(--color-accent-2); }
+
+/* Pinned horizontal track: CIA, AAA, POPIA */
+.frameworks { position: relative; height: 640vh; }
+.frameworks .stage {
+  position: sticky; top: 0; height: 100vh; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center; gap: var(--space-6);
+  padding: clamp(90px, 12vh, 120px) 0 var(--space-6);
+}
+.frameworks .progress { display: flex; align-items: center; gap: var(--space-4); font-size: 15px; color: var(--color-neutral-600); }
+.frameworks .progress span { transition: color .3s; }
+.frameworks .progress span.on { color: var(--color-accent-700); font-weight: 600; }
+.frameworks .progress .bar { flex: 1; max-width: 320px; height: 3px; background: var(--color-neutral-200); }
+.frameworks .progress .bar > div { height: 100%; background: var(--color-accent); transform-origin: left; transform: scaleX(0); }
+.htrack { display: flex; gap: var(--space-6); padding: 0 clamp(20px, 4vw, 56px); width: max-content; will-change: transform; }
+.group { display: flex; gap: var(--space-6); align-items: center; }
+.group .intro { width: min(420px, 80vw); flex: none; display: flex; flex-direction: column; gap: var(--space-4); }
+.group .intro h2 { margin: 0; font-size: clamp(34px, 4.4vw, 64px); line-height: 1.02; letter-spacing: -.02em; }
+.group .intro p { margin: 0; font-size: 19px; line-height: 1.5; text-wrap: pretty; }
+.cards { list-style: none; margin: 0; padding: 0; display: flex; gap: var(--space-6); }
+.hcard {
+  width: min(380px, 78vw); flex: none; display: flex; flex-direction: column; gap: var(--space-3);
+  padding: var(--space-6); background: var(--color-neutral-100); box-shadow: var(--shadow-md); border-radius: var(--radius-md);
+}
+.hcard .n { font-size: 52px; line-height: 1; color: var(--color-accent); }
+.hcard p { margin: 0; font-size: 17px; line-height: 1.5; text-wrap: pretty; }
+.hcard b { font-weight: 600; }
+
+/* Security and Access Control: sentences with a token column */
+.access {
+  padding-top: clamp(60px, 10vh, 120px); padding-bottom: clamp(60px, 10vh, 120px);
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: clamp(32px, 5vw, 80px); align-items: start;
+}
+.access-head { position: sticky; top: 120px; }
+.access-head h2 { margin: 0; max-width: 520px; font-size: clamp(34px, 4.4vw, 64px); line-height: 1.02; letter-spacing: -.02em; }
+.access .rows { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: var(--space-6) var(--space-4); align-items: baseline; }
+.access .rows p { grid-column: 2; grid-row: var(--r); margin: 0; font-size: 19px; line-height: 1.5; text-wrap: pretty; }
+.access .rows .tok { grid-column: 1; grid-row: var(--r); font-size: 40px; line-height: 1; color: var(--color-accent-2); }
+
+/* Design and Pedagogy of Reasoning */
+.pedagogy { padding-top: clamp(60px, 10vh, 120px); padding-bottom: clamp(20px, 4vh, 40px); }
+.pedagogy .section-head { max-width: 900px; }
+.pedagogy .section-head p { max-width: 62ch; font-size: clamp(19px, 1.5vw, 22px); }
+
+/* Phones */
+@media (max-width: 760px) {
+  .hero .stamp, .hero .form { top: calc(var(--top) * .8 + 30px); }
+  .hero .stamp { width: 110px; height: 110px; font-size: 11px; }
+  .hero .stamp .it { font-size: 17px; }
+  .hero .form { width: 210px; font-size: 13px; padding: var(--space-3); }
+  .hero .float.ink { font-size: 13px; }
+  .frameworks .stage { padding-top: 112px; gap: var(--space-4); }
+  .group .intro h2 { font-size: 32px; }
+  .group .intro p { font-size: 17px; }
+  .hcard { padding: var(--space-4); gap: var(--space-2); }
+  .hcard .n { font-size: 38px; }
+  .hcard p { font-size: 15.5px; line-height: 1.45; }
+  .access .rows p { font-size: 17px; }
+  .access .rows .tok { font-size: 26px; }
+}
+
+/* Scripts off: unpin the track and stack the groups. */
+html:not(.js) .frameworks { height: auto; }
+html:not(.js) .frameworks .stage { position: static; height: auto; overflow: visible; }
+html:not(.js) .frameworks .progress { display: none; }
+html:not(.js) .htrack { width: auto; flex-direction: column; gap: clamp(60px, 10vh, 120px); }
+html:not(.js) .group { flex-wrap: wrap; align-items: stretch; }
+html:not(.js) .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); flex: 1 1 100%; width: 100%; }
+html:not(.js) .hcard { width: auto; }
+@media (max-width: 760px) { .access-head { position: static; } }

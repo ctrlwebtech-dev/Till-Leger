@@ -1,0 +1,112 @@
+/* Data page: hero, DIKW pinned scroll, quality groups, ERD, pedagogy note. */
+
+/* Hero: the topic heading is longer than the design's, so it runs smaller. */
+.hero h1 { font-size: clamp(44px, 7.4vw, 120px); }
+.hero .float.acc { background: var(--color-accent-100); color: var(--color-accent-900); }
+.hero .float.warn { color: var(--color-accent-2-700); }
+
+/* DIKW pinned scroll */
+.dikw { position: relative; height: 620vh; }
+.dikw .stage {
+  position: sticky; top: 0; height: 100vh;
+  padding-top: clamp(90px, 12vh, 120px); padding-bottom: var(--space-6);
+  display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(24px, 4vw, 64px); align-items: center;
+}
+.dikw .steps { position: relative; height: min(68vh, 600px); }
+.dikw .steps-head { position: absolute; top: 0; left: 0; right: 0; margin: 0; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.1; letter-spacing: -.01em; font-weight: 600; max-width: 22ch; }
+.dikw .step { position: absolute; left: 0; right: 0; top: 24%; display: flex; flex-direction: column; gap: var(--space-4); }
+.js .dikw .step { opacity: 0; }
+.dikw .step .plus { font-size: clamp(40px, 5vw, 76px); line-height: 1; letter-spacing: -.02em; font-weight: 600; }
+.dikw .step p { margin: 0; max-width: 40ch; font-size: clamp(17px, 1.45vw, 20px); line-height: 1.5; text-wrap: pretty; }
+.dikw .step.intro p { font-size: clamp(19px, 1.75vw, 24px); line-height: 1.45; font-style: italic; color: var(--color-accent-800); }
+
+.dikw .scene { position: relative; height: min(70vh, 620px); display: flex; align-items: center; justify-content: center; perspective: 1400px; }
+.dikw .rail { position: absolute; left: 0; top: 12%; bottom: 12%; width: 2px; background: var(--color-neutral-200); }
+.dikw .rail > div { position: absolute; left: 0; right: 0; bottom: 0; height: 100%; background: var(--color-accent-2); transform-origin: bottom; }
+.dikw .pyr { position: relative; width: min(480px, 38vw); aspect-ratio: 1 / .92; transform-style: preserve-3d; }
+.dikw .layer { position: absolute; left: 0; right: 0; height: 25%; will-change: transform; }
+.js .dikw .layer { opacity: 0; }
+.dikw .layer [data-face] { position: absolute; inset: 0; }
+.dikw .layer > span { position: absolute; left: 0; right: 0; bottom: 22%; text-align: center; font-weight: 600; font-size: clamp(15px, 1.5vw, 22px); padding-left: 14%; }
+.dikw [data-layer="0"] { top: 75%; }
+.dikw [data-layer="0"] [data-face="L"] { background: var(--color-neutral-400); }
+.dikw [data-layer="0"] [data-face="R"] { background: var(--color-neutral-300); }
+.dikw [data-layer="0"] > span { color: var(--color-text); }
+.dikw [data-layer="1"] { top: 50%; }
+.dikw [data-layer="1"] [data-face="L"] { background: var(--color-accent-300); }
+.dikw [data-layer="1"] [data-face="R"] { background: var(--color-accent-200); }
+.dikw [data-layer="1"] > span { color: var(--color-accent-900); }
+.dikw [data-layer="2"] { top: 25%; }
+.dikw [data-layer="2"] [data-face="L"] { background: var(--color-accent-500); }
+.dikw [data-layer="2"] [data-face="R"] { background: var(--color-accent-400); }
+.dikw [data-layer="2"] > span { color: var(--color-accent-900); font-size: clamp(14px, 1.3vw, 20px); padding-left: 12%; }
+.dikw [data-layer="3"] { top: 0; }
+.dikw [data-layer="3"] [data-face="L"] { background: var(--color-accent-800); }
+.dikw [data-layer="3"] [data-face="R"] { background: var(--color-accent-700); }
+.dikw [data-layer="3"] > span { color: var(--color-bg); bottom: 8%; font-size: clamp(12px, 1vw, 15px); padding-left: 0; }
+.dikw .chip {
+  position: absolute; left: 0; top: 0; white-space: nowrap; padding: 3px 8px; font-size: 14px;
+  background: var(--color-neutral-100); box-shadow: var(--shadow-sm); color: var(--color-text); opacity: 0;
+}
+.dikw .chip.key { color: var(--color-accent-2-700); }
+
+/* Shared label and bullet styles */
+.plus { font-size: 16px; color: var(--color-accent-2-700); font-style: italic; }
+.dot { color: var(--color-accent); margin-right: 4px; }
+
+/* Information quality: four groups, seven criteria */
+.quality { padding-top: clamp(80px, 14vh, 160px); padding-bottom: clamp(80px, 14vh, 160px); display: flex; flex-direction: column; gap: var(--space-8); }
+.quality .grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: var(--space-8) var(--space-6); }
+.quality .test { display: flex; flex-direction: column; gap: var(--space-3); padding-top: var(--space-4); border-top: 1.5px solid var(--color-text); }
+.quality .test h3 { margin: 0; font-size: 26px; line-height: 1.15; font-weight: 600; }
+.quality .test h3 .it { display: block; margin-top: 6px; font-size: 17px; line-height: 1.4; color: var(--color-accent-800); }
+.quality .test ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.quality .test li { font-size: 17px; line-height: 1.5; }
+.quality .test li b { font-weight: 600; color: var(--color-accent-2-700); }
+
+/* ERD */
+.erd-section { padding-top: clamp(60px, 10vh, 120px); padding-bottom: clamp(60px, 10vh, 120px); display: flex; flex-direction: column; gap: var(--space-8); }
+.erd-section .tables { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: var(--space-6); }
+.erd-section .tables li { font-size: 17px; line-height: 1.5; padding: var(--space-4) 20px; background: var(--color-neutral-100); box-shadow: var(--shadow-sm); }
+.erd-section .tables b { font-weight: 600; color: var(--color-accent-700); }
+.erd { display: flex; align-items: flex-start; }
+.erd .entity { flex: 1 1 0; min-width: 0; padding: var(--space-3) var(--space-4); background: var(--color-neutral-100); box-shadow: var(--shadow-md); display: flex; flex-direction: column; gap: 4px; }
+.erd .entity b { font-weight: 600; font-size: 18px; margin-bottom: 4px; }
+.erd .entity span { font-size: 14px; color: var(--color-neutral-700); display: flex; gap: 6px; align-items: baseline; overflow-wrap: anywhere; }
+.erd .entity i { font-style: normal; font-size: 11px; font-weight: 600; color: var(--color-accent-2-700); }
+.erd .link { flex: none; width: clamp(36px, 5vw, 64px); height: 28px; margin-top: 18px; color: var(--color-accent); }
+.erd .link.flip { transform: scaleX(-1); }
+.erd-notes { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: var(--space-6); font-size: 18px; line-height: 1.5; }
+.erd-notes b { font-weight: 600; }
+
+/* Pedagogy note */
+.pedagogy { padding-top: clamp(40px, 8vh, 100px); padding-bottom: clamp(80px, 14vh, 160px); }
+.pedagogy .section-head p { max-width: 60ch; font-size: clamp(19px, 1.6vw, 22px); }
+
+/* Phones: stack the pinned DIKW stage, pyramid above the text */
+@media (max-width: 760px) {
+  .dikw .stage { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; align-items: start; gap: var(--space-3); padding-top: 104px; padding-bottom: var(--space-3); }
+  .dikw .scene { order: -1; height: 30vh; overflow: hidden; align-items: flex-end; padding-bottom: 4px; }
+  .dikw .pyr { width: min(214px, 54vw, 23vh); }
+  .dikw .steps { height: calc(70vh - 130px); }
+  .dikw .steps-head { font-size: 20px; max-width: none; }
+  .dikw .step { top: 92px; gap: var(--space-2); }
+  .dikw .step .plus { font-size: 28px; }
+  .dikw .step p { font-size: 15.5px; line-height: 1.45; }
+  .dikw .step.intro p { font-size: 17px; }
+  .dikw .chip { font-size: 11px; }
+  .dikw [data-layer="3"] > span { font-size: 9px; bottom: 4%; letter-spacing: -.02em; }
+  .erd { flex-direction: column; align-items: stretch; }
+  .erd .link { align-self: center; margin: 0; width: 40px; height: 40px; transform: rotate(90deg); }
+  .erd .link.flip { transform: rotate(-90deg); }
+}
+
+/* Start states for the scroll animations. Scoped to .js so the page still
+   reads with scripts off: steps stack and the pyramid scene is hidden. */
+.js .dikw .rail > div { transform: scaleY(0); }
+html:not(.js) .dikw { height: auto; }
+html:not(.js) .dikw .stage { position: static; height: auto; grid-template-columns: minmax(0, 1fr); }
+html:not(.js) .dikw .steps { height: auto; display: flex; flex-direction: column; gap: var(--space-8); }
+html:not(.js) .dikw .step, html:not(.js) .dikw .steps-head { position: static; }
+html:not(.js) .dikw .scene { display: none; }

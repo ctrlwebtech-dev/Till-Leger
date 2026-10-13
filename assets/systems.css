@@ -1,0 +1,77 @@
+/* Systems page: integration diagram, the integrated process, on premises vs cloud table. */
+
+.hero h1 { font-size: clamp(44px, 8vw, 128px); }
+.hero .float.doubt { background: var(--color-accent-2-100); color: var(--color-accent-2-900); font-style: italic; font-size: 16px; }
+
+/* Integration diagram */
+.integration { padding-top: clamp(60px, 10vh, 120px); padding-bottom: clamp(60px, 10vh, 120px); display: flex; flex-direction: column; gap: var(--space-6); }
+.integration-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: var(--space-4); }
+.integration-head .section-head { max-width: 640px; }
+.seg-opt { font: inherit; font-size: 15px; padding: 9px 16px; border: 0; background: transparent; color: var(--color-text); }
+.seg-opt[aria-pressed="true"] { background: var(--color-accent-200); }
+.seg-opt:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+.diag { position: relative; height: clamp(420px, 58vh, 560px); }
+.diag svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.diag circle { fill: var(--color-accent); }
+.hub {
+  --hub: 150px;
+  position: absolute; left: 0; top: 0; width: var(--hub); height: var(--hub); margin: calc(var(--hub) / -2) 0 0 calc(var(--hub) / -2);
+  border-radius: 50%; background: var(--color-text); color: var(--color-bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: var(--shadow-lg);
+}
+.hub b { font-size: 24px; font-weight: 600; }
+.hub span { font-size: 13px; color: var(--color-neutral-300); }
+.nodes { list-style: none; margin: 0; padding: 0; }
+.node {
+  position: absolute; left: 0; top: 0; transform: translate(-50%, -50%);
+  padding: var(--space-3) var(--space-4); background: var(--color-neutral-100); box-shadow: var(--shadow-md);
+  font-size: 17px; font-weight: 600; white-space: nowrap;
+}
+.js .hub { opacity: 0; }
+
+/* The integrated process */
+.process { padding-top: clamp(80px, 14vh, 160px); padding-bottom: clamp(60px, 10vh, 120px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: clamp(32px, 5vw, 80px); align-items: start; }
+.process-lines { display: flex; flex-direction: column; gap: var(--space-6); }
+.process-lines p { margin: 0; font-size: clamp(19px, 1.6vw, 22px); line-height: 1.5; text-wrap: pretty; }
+.process-lines p:nth-child(2) { font-style: italic; color: var(--color-accent-800); }
+
+/* Physical vs cloud table */
+.compare { padding-top: clamp(60px, 10vh, 120px); padding-bottom: clamp(60px, 10vh, 120px); display: flex; flex-direction: column; gap: var(--space-8); }
+.table-wrap { max-width: 1000px; width: 100%; }
+.compare-table { width: 100%; border-collapse: collapse; font-size: 16px; table-layout: fixed; }
+.compare-table th, .compare-table td { text-align: left; vertical-align: top; padding: var(--space-3) var(--space-4) var(--space-3) 0; line-height: 1.45; border-bottom: 1px solid var(--color-divider); }
+.compare-table thead th { font-size: .9em; color: var(--color-neutral-700); border-bottom: 1.5px solid var(--color-text); }
+.compare-table tbody th { font-weight: 600; }
+.compare-table thead th:first-child { width: 22%; }
+.compare-table td b { font-weight: 600; color: var(--color-accent-700); }
+.compare-table td:nth-child(2) b { color: var(--color-accent-2-700); }
+.verdict { margin: 0; max-width: 62ch; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.55; text-wrap: pretty; }
+
+/* Design and pedagogy */
+.pedagogy { padding-top: clamp(60px, 10vh, 120px); padding-bottom: clamp(60px, 10vh, 120px); display: flex; flex-direction: column; gap: var(--space-8); }
+.pedagogy h2 { margin: 0; font-size: clamp(34px, 4.4vw, 64px); line-height: 1.02; letter-spacing: -.02em; }
+.pedagogy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8) var(--space-6); }
+.pedagogy-grid p { margin: 0; font-size: 17px; line-height: 1.5; color: var(--color-neutral-800); }
+.pedagogy-grid p:first-child { font-size: 20px; color: var(--color-text); }
+
+/* Phones: smaller hub and nodes so the ring fits; table text shrinks */
+@media (max-width: 760px) {
+  .diag { height: 440px; }
+  .hub { --hub: 104px; }
+  .hub b { font-size: 19px; }
+  .node { font-size: 14px; padding: var(--space-2) var(--space-3); white-space: normal; max-width: 9.5em; text-align: center; }
+  .compare-table { font-size: 14px; }
+  .compare-table th, .compare-table td { padding-right: var(--space-2); }
+  .compare-table thead th:first-child { width: 30%; }
+  .compare-table td { overflow-wrap: break-word; }
+  .compare-table tbody th { font-size: 13px; }
+}
+
+/* Without scripts the diagram becomes a plain list around the hub */
+html:not(.js) .seg { display: none; }
+html:not(.js) .diag { height: auto; display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; }
+html:not(.js) .diag svg { display: none; }
+html:not(.js) .hub { position: static; margin: 0; }
+html:not(.js) .nodes { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+html:not(.js) .node { position: static; transform: none; }
