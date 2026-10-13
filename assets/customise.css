@@ -1,9 +1,17 @@
-/* Customise page: hero tags, misfit chips, upgrade-risk chart and table,
-   API links, the six SDLC phases as a checklist, then the pedagogy card. */
+/* Customise page: hero tags and the retail challenge, misfit chips,
+   upgrade-risk chart and table, API links, the six SDLC phases as a
+   checklist, then the pedagogy card. */
 
 /* Hero: the topic heading is long, so it runs a size below the shared hero. */
 .custom-hero h1 { font-size: clamp(40px, 6.8vw, 116px); }
-.custom-hero .lede { max-width: 58ch; }
+.custom-hero .lede { max-width: 62ch; font-size: clamp(17px, 1.4vw, 20px); }
+/* Under the headline: the section heading beside its opening paragraph. */
+.hero-intro {
+  display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr);
+  gap: clamp(24px, 4vw, 64px); align-items: start;
+  padding-top: var(--space-4); border-top: 1.5px solid var(--color-text); max-width: 1200px;
+}
+.hero-intro h2 { margin: 0; font-size: clamp(26px, 2.6vw, 38px); line-height: 1.08; letter-spacing: -.015em; font-weight: 600; }
 .custom-hero .float.panel {
   width: 230px; padding: var(--space-4); box-shadow: var(--shadow-lg);
   display: flex; flex-direction: column; gap: 8px; font-size: 14px;
@@ -22,11 +30,11 @@
 .misfit, .spectrum, .later, .api, .sdlc, .sa, .pedagogy {
   padding-top: clamp(60px, 10vh, 120px); padding-bottom: clamp(60px, 10vh, 120px);
 }
-.later .section-head, .api .section-head, .sa .section-head { max-width: 900px; }
-.later .section-head p, .api .section-head p, .sa .section-head p { max-width: 66ch; }
+.spectrum .section-head, .api .section-head, .sa .section-head { max-width: 900px; }
+.spectrum .section-head p, .api .section-head p, .sa .section-head p { max-width: 66ch; }
 
-/* Misfit: heading, then the paragraph beside the four real misfits. */
-.misfit { display: flex; flex-direction: column; gap: var(--space-6); }
+/* Misfit: the paragraph beside the four misfits it names. */
+.misfit { display: flex; flex-direction: column; gap: var(--space-6); padding-top: clamp(40px, 7vh, 90px); }
 .misfit-body {
   display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   gap: clamp(32px, 5vw, 80px); align-items: center;
@@ -64,9 +72,15 @@
 .chart .name { font-size: 14px; line-height: 1.3; hyphens: auto; }
 .chart .col.easy .name { color: var(--color-accent-700); }
 
-/* Tailoring table with a five-step risk meter in the last column. */
-.later { display: flex; flex-direction: column; gap: var(--space-8); }
-.later .section-head { gap: var(--space-4); }
+/* SaaS paragraph as an accented note, then the tailoring table with a
+   five-step risk meter in the last column. */
+.later { display: flex; flex-direction: column; gap: var(--space-8); padding-top: 0; }
+.saas {
+  width: fit-content; max-width: 820px; padding: var(--space-4) var(--space-6); box-shadow: var(--shadow-md);
+  background: var(--color-accent-2-100); color: var(--color-accent-2-900);
+  border-left: 6px solid var(--color-accent-2);
+}
+.saas p { margin: 0; max-width: 72ch; font-size: 18px; line-height: 1.55; text-wrap: pretty; }
 .table-wrap { max-width: 1200px; width: 100%; }
 .tailor { width: 100%; border-collapse: collapse; font-size: 16px; table-layout: fixed; }
 .tailor col { width: auto; }
@@ -152,7 +166,7 @@ tr[data-risk="1"] .meter i::after { background: var(--color-accent); }
 .js .phase:not(.done) .box::after { opacity: 0; }
 .phase p { margin: 0; font-size: 18px; line-height: 1.55; color: var(--color-neutral-800); max-width: 60ch; text-wrap: pretty; }
 .phase .lab { display: block; margin-bottom: var(--space-2); font-size: clamp(26px, 2.6vw, 36px); line-height: 1.1; font-weight: 600; color: var(--color-text); letter-spacing: -.01em; }
-.phase .lab .n { color: var(--color-accent); font-weight: 400; }
+.phase .nm { font-weight: 600; color: var(--color-accent-800); }
 
 /* Pedagogy: heading beside a card holding the whole paragraph. */
 .pedagogy {
@@ -173,6 +187,10 @@ tr[data-risk="1"] .meter i::after { background: var(--color-accent); }
   .custom-hero .float.tag { top: 184px; right: auto !important; left: 44px; font-size: 16px; }
   .custom-hero .float.soft { top: 262px; right: auto !important; left: 20px; max-width: 200px; font-size: 13px; }
 
+  .hero-intro { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); padding-top: var(--space-4); }
+  .hero-intro h2 { font-size: 24px; }
+  .saas { padding: var(--space-4); border-left-width: 4px; }
+  .saas p { font-size: 16px; }
   .misfit-body { grid-template-columns: minmax(0, 1fr); }
   .misfit-body p, .phase p { font-size: 16px; }
   .chip { font-size: 14px; }
