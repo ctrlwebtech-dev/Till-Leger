@@ -7,9 +7,10 @@
 <meta name="description" content="Topic 1 was chosen to show non-technical owners how transactional data gets transformed using the DIKW paradigm into retail knowledge.">
 <script>document.documentElement.classList.add('js');</script>
 <link rel="icon" href="data:,">
-<link rel="stylesheet" href="assets/broadsheet.css">
-<link rel="stylesheet" href="assets/site.css">
-<link rel="stylesheet" href="assets/data.css">
+<link rel="stylesheet" href="assets/broadsheet.css?v=552056c9">
+<link rel="stylesheet" href="assets/site.css?v=a3ca9510">
+<link rel="stylesheet" href="assets/data.css?v=2dc1046f">
+<link rel="stylesheet" href="assets/erd.css?v=6f7d16d1">
 </head>
 <body>
 <div class="page" data-page>
@@ -28,10 +29,25 @@
 
 <main>
 <header class="hero gutter">
-  <div class="float" aria-hidden="true" data-depth="0.6" data-rot="-5" data-speed="0.3" style="--top:18vh;right:10vw">customer_id</div>
-  <div class="float" aria-hidden="true" data-depth="1.2" data-rot="7" data-speed="0.5" style="--top:34vh;right:30vw">sale_id</div>
-  <div class="float acc" aria-hidden="true" data-depth="0.9" data-rot="-9" data-speed="0.7" style="--top:52vh;right:6vw">total_amount</div>
-  <div class="float warn" aria-hidden="true" data-depth="1.6" data-rot="4" data-speed="0.9" style="--top:22vh;right:46vw">payment_method</div>
+  <div class="float rec cust" aria-hidden="true" data-depth="0.7" data-rot="-4" data-speed="0.3" style="--top:15vh;right:8vw">
+    <b>CUSTOMER</b>
+    <span class="pk">customer_id</span>
+    <span>full_name</span>
+    <span>email</span>
+    <span>phone</span>
+    <span>marketing_consent</span>
+    <span>loyalty_points</span>
+  </div>
+  <div class="float rec sale" aria-hidden="true" data-depth="1.3" data-rot="6" data-speed="0.55" style="--top:12vh;right:37vw">
+    <b>SALE</b>
+    <span class="pk">sale_id</span>
+    <span class="fk">customer_id</span>
+    <span>sale_datetime</span>
+    <span>payment_method</span>
+    <span>total_amount</span>
+  </div>
+  <div class="float key dark" aria-hidden="true" data-depth="1.8" data-rot="-8" data-speed="0.9" style="--top:62vh;right:7vw">PK</div>
+  <div class="float key tag" aria-hidden="true" data-depth="1.1" data-rot="5" data-speed="0.45" style="--top:36vh;right:55vw">FK</div>
   <h1>
     <span class="mask"><span data-line="0">Topic 1:</span></span>
     <span class="mask"><span data-line="1">Data and Information</span></span>
@@ -43,6 +59,8 @@
   <div class="stage gutter">
     <div class="steps">
       <h2 id="dikw-h" class="steps-head">Daily Retail Operations described by DIKW</h2>
+      <div class="progress" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="stack">
       <div class="step intro" data-step="0">
         <p>The Data, Information, Knowledge and Wisdom (DIKW) pyramid, is used to illustrate the relationship between these concepts and manage data or information in a construct. This pyramid or hierarchy consists of four different levels that facilitate understanding and quick decision making.</p>
       </div>
@@ -62,6 +80,7 @@
         <span class="plus">Level 4.</span>
         <p>At the very top of a pyramid is wisdom, wisdom is where experience and knowledge help the owner of a retail operation make quick and informed decisions. An example being, a retail store owner increasing the order amount of a certain product they think is going to sell, with the risk of having leftover products in mind.</p>
       </div>
+      </div>
     </div>
     <div class="scene" aria-hidden="true">
       <div class="rail"><div data-valbar="1"></div></div>
@@ -77,21 +96,24 @@
 </section>
 
 <section class="quality gutter" aria-labelledby="quality-h">
-  <div class="section-head" data-reveal="1">
-    <h2 id="quality-h">The Seven Information Quality Criteria</h2>
-    <p>To guarantee that the information systems used in the retail business help make decisions based on correct and appropriate information, data should be evaluated based on the seven criteria, which can be divided into four basic groups:</p>
+  <div class="q-side">
+    <div class="section-head" data-reveal="1">
+      <h2 id="quality-h">The Seven Information Quality Criteria</h2>
+      <p>To guarantee that the information systems used in the retail business help make decisions based on correct and appropriate information, data should be evaluated based on the seven criteria, which can be divided into four basic groups:</p>
+    </div>
+    <div class="seven big" aria-hidden="true" data-reveal="1"><i data-g="1"></i><i data-g="1"></i><i data-g="2"></i><i data-g="2"></i><i data-g="2"></i><i data-g="3"></i><i data-g="4"></i></div>
   </div>
   <ol class="grid">
-    <li class="test" data-reveal="1">
-      <span class="plus">Group 1.</span>
+    <li class="test" data-g="1" data-reveal="1">
+      <div class="t-top"><span class="plus">Group 1.</span><span class="seven" aria-hidden="true"><i class="g"></i><i class="g"></i><i></i><i></i><i></i><i></i><i></i></span></div>
       <h3>Intrinsic Quality <span class="it">(quality of the data regarding its nature regardless of the context)</span></h3>
       <ul>
         <li><span class="dot" aria-hidden="true">•</span> <b>Accuracy:</b> Degree to which data represents actual reality of the retail transactions (for example, the system captures the correct price charged during checkout).</li>
         <li><span class="dot" aria-hidden="true">•</span> <b>Believability:</b> The extent to which employees and management believe that the data is credible.</li>
       </ul>
     </li>
-    <li class="test" data-reveal="1">
-      <span class="plus">Group 2.</span>
+    <li class="test" data-g="2" data-reveal="1">
+      <div class="t-top"><span class="plus">Group 2.</span><span class="seven" aria-hidden="true"><i></i><i></i><i class="g"></i><i class="g"></i><i class="g"></i><i></i><i></i></span></div>
       <h3>Contextual Quality <span class="it">(quality of the data relative to its usage context)</span></h3>
       <ul>
         <li><span class="dot" aria-hidden="true">•</span> <b>Relevance:</b> Data should be relevant to the task being conducted in the retail store (such as looking at the local weather forecast when planning the number of hot drinks).</li>
@@ -99,15 +121,15 @@
         <li><span class="dot" aria-hidden="true">•</span> <b>Completeness:</b> All fields that need to be filled in to complete the transaction/report should have the necessary data entered.</li>
       </ul>
     </li>
-    <li class="test" data-reveal="1">
-      <span class="plus">Group 3.</span>
+    <li class="test" data-g="3" data-reveal="1">
+      <div class="t-top"><span class="plus">Group 3.</span><span class="seven" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i class="g"></i><i></i></span></div>
       <h3>Representational Quality <span class="it">(The way the data is represented)</span></h3>
       <ul>
         <li><span class="dot" aria-hidden="true">•</span> <b>Uniform Representation:</b> Making sure that the data is represented consistently in all the integrated software (all of them use the same date and currency formats).</li>
       </ul>
     </li>
-    <li class="test" data-reveal="1">
-      <span class="plus">Group 4.</span>
+    <li class="test" data-g="4" data-reveal="1">
+      <div class="t-top"><span class="plus">Group 4.</span><span class="seven" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i class="g"></i></span></div>
       <h3>Accessibility Quality <span class="it">(The ability to access data)</span></h3>
       <ul>
         <li><span class="dot" aria-hidden="true">•</span> <b>Accessibility:</b> This refers to how fast and easy it is for authorized personnel to access the data required while keeping the security barriers intact.</li>
@@ -116,30 +138,147 @@
   </ol>
 </section>
 
-<section class="erd-section gutter" aria-labelledby="erd-h">
-  <div class="section-head" data-reveal="1">
-    <h2 id="erd-h">Entity Relationship Diagram</h2>
-    <p>The ERD is uniquely designed for the SME retail sales and inventory management system with four relational tables.</p>
+<section id="erd" class="erd-section erd-press gutter" data-pin="9" aria-labelledby="erd-h">
+  <div class="stage">
+    <div class="lede-wrap">
+      <h2 id="erd-h">Entity Relationship Diagram</h2>
+      <div class="lede" data-step="0">
+        <p>The ERD is uniquely designed for the SME retail sales and inventory management system with four relational tables.</p>
+      </div>
+      <div class="progress" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <figure class="sheet" aria-labelledby="erd-h">
+      <div class="win">
+        <div class="canvas">
+          <div class="slots" aria-hidden="true"><i data-of="customer"></i><i data-of="sale"></i><i data-of="line_item"></i><i data-of="product"></i></div>
+          <div class="ghosts" aria-hidden="true">
+            <i class="ghost" data-of="sale"></i><i class="ghost" data-of="sale"></i>
+            <i class="ghost" data-of="line_item"></i><i class="ghost" data-of="line_item"></i>
+          </div>
+          <svg class="ink" viewBox="0 0 760 560" aria-hidden="true" focusable="false">
+              <g data-rel="cs">
+                <path class="hit" data-hover d="M296 49 L334.8 49 Q340.8 49 340.8 55 L340.8 73 Q340.8 79 346.8 79 L375 79 A5 5 0 0 1 385 79 L464 79"/>
+                <path class="base" d="M296 49 L334.8 49 Q340.8 49 340.8 55 L340.8 73 Q340.8 79 346.8 79 L375 79 A5 5 0 0 1 385 79 L464 79"/>
+                <path class="ghost" pathLength="1" d="M296 49 L334.8 49 Q340.8 49 340.8 55 L340.8 73 Q340.8 79 346.8 79 L375 79 A5 5 0 0 1 385 79 L464 79"/>
+                <path class="ink" pathLength="1" d="M296 49 L334.8 49 Q340.8 49 340.8 55 L340.8 73 Q340.8 79 346.8 79 L375 79 A5 5 0 0 1 385 79 L464 79"/>
+                <g class="one"><line x1="305.00" y1="42.00" x2="305.00" y2="56.00"/></g>
+                <g class="many"><line x1="452" y1="79" x2="464" y2="70"/><line x1="452" y1="79" x2="464" y2="79"/><line x1="452" y1="79" x2="464" y2="88"/></g>
+                <circle class="dot" r="3.5"/><circle class="dot" r="3.5"/><circle class="dot" r="3.5"/>
+              </g>
+              <g data-rel="sl">
+                <path class="hit" data-hover d="M464 49 L386 49 Q380 49 380 55 L380 373 Q380 379 374 379 L272 379"/>
+                <path class="base" d="M464 49 L386 49 Q380 49 380 55 L380 373 Q380 379 374 379 L272 379"/>
+                <path class="ghost" pathLength="1" d="M464 49 L386 49 Q380 49 380 55 L380 373 Q380 379 374 379 L272 379"/>
+                <path class="ink" pathLength="1" d="M464 49 L386 49 Q380 49 380 55 L380 373 Q380 379 374 379 L272 379"/>
+                <g class="one"><line x1="455.00" y1="42.00" x2="455.00" y2="56.00"/></g>
+                <g class="many"><line x1="284" y1="379" x2="272" y2="370"/><line x1="284" y1="379" x2="272" y2="379"/><line x1="284" y1="379" x2="272" y2="388"/></g>
+                <circle class="dot" r="3.5"/><circle class="dot" r="3.5"/><circle class="dot" r="3.5"/>
+              </g>
+              <g data-rel="pl">
+                <path class="hit" data-hover d="M472 349 L425.2 349 Q419.2 349 419.2 355 L419.2 403 Q419.2 409 413.2 409 L272 409"/>
+                <path class="base" d="M472 349 L425.2 349 Q419.2 349 419.2 355 L419.2 403 Q419.2 409 413.2 409 L272 409"/>
+                <path class="ghost" pathLength="1" d="M472 349 L425.2 349 Q419.2 349 419.2 355 L419.2 403 Q419.2 409 413.2 409 L272 409"/>
+                <path class="ink" pathLength="1" d="M472 349 L425.2 349 Q419.2 349 419.2 355 L419.2 403 Q419.2 409 413.2 409 L272 409"/>
+                <g class="one"><line x1="463.00" y1="342.00" x2="463.00" y2="356.00"/></g>
+                <g class="many"><line x1="284" y1="409" x2="272" y2="400"/><line x1="284" y1="409" x2="272" y2="409"/><line x1="284" y1="409" x2="272" y2="418"/></g>
+                <circle class="dot" r="3.5"/><circle class="dot" r="3.5"/><circle class="dot" r="3.5"/>
+              </g>
+          </svg>
+            <div class="plate" data-table="customer" tabindex="0">
+              <div class="press">
+                <i class="cy" aria-hidden="true"></i><i class="mg" aria-hidden="true"></i><i class="paper" aria-hidden="true"></i>
+                <table>
+                  <caption>CUSTOMER</caption>
+                  <tbody>
+                    <tr data-col="customer_id" data-key="pk" data-link="cs"><td class="key"><span class="k">PK</span></td><th scope="row">customer_id</th><td class="type">int</td></tr>
+                    <tr data-col="full_name"><td class="key"></td><th scope="row">full_name</th><td class="type">varchar</td></tr>
+                    <tr data-col="email"><td class="key"></td><th scope="row">email</th><td class="type">varchar</td></tr>
+                    <tr data-col="phone"><td class="key"></td><th scope="row">phone</th><td class="type">varchar</td></tr>
+                    <tr data-col="marketing_consent"><td class="key"></td><th scope="row">marketing_consent</th><td class="type">boolean</td></tr>
+                    <tr data-col="loyalty_points"><td class="key"></td><th scope="row">loyalty_points</th><td class="type">int</td></tr>
+                  </tbody>
+                </table>
+                <i class="roller" aria-hidden="true"></i>
+              </div>
+              <i class="reg" aria-hidden="true"></i><i class="reg" aria-hidden="true"></i><i class="reg" aria-hidden="true"></i><i class="reg" aria-hidden="true"></i>
+            </div>
+            <div class="plate" data-table="sale" tabindex="0">
+              <div class="press">
+                <i class="cy" aria-hidden="true"></i><i class="mg" aria-hidden="true"></i><i class="paper" aria-hidden="true"></i>
+                <table>
+                  <caption>SALE</caption>
+                  <tbody>
+                    <tr data-col="sale_id" data-key="pk" data-link="sl"><td class="key"><span class="k">PK</span></td><th scope="row">sale_id</th><td class="type">int</td></tr>
+                    <tr data-col="customer_id" data-key="fk" data-link="cs"><td class="key"><span class="k">FK</span></td><th scope="row">customer_id</th><td class="type">int</td></tr>
+                    <tr data-col="sale_datetime"><td class="key"></td><th scope="row">sale_datetime</th><td class="type">datetime</td></tr>
+                    <tr data-col="payment_method"><td class="key"></td><th scope="row">payment_method</th><td class="type">varchar</td></tr>
+                    <tr data-col="total_amount"><td class="key"></td><th scope="row">total_amount</th><td class="type">decimal</td></tr>
+                  </tbody>
+                </table>
+                <i class="roller" aria-hidden="true"></i>
+              </div>
+              <i class="reg" aria-hidden="true"></i><i class="reg" aria-hidden="true"></i><i class="reg" aria-hidden="true"></i><i class="reg" aria-hidden="true"></i>
+            </div>
+            <div class="plate" data-table="line_item" tabindex="0">
+              <div class="press">
+                <i class="cy" aria-hidden="true"></i><i class="mg" aria-hidden="true"></i><i class="paper" aria-hidden="true"></i>
+                <table>
+                  <caption>LINE_ITEM</caption>
+                  <tbody>
+                    <tr data-col="line_id" data-key="pk"><td class="key"><span class="k">PK</span></td><th scope="row">line_id</th><td class="type">int</td></tr>
+                    <tr data-col="sale_id" data-key="fk" data-link="sl"><td class="key"><span class="k">FK</span></td><th scope="row">sale_id</th><td class="type">int</td></tr>
+                    <tr data-col="product_id" data-key="fk" data-link="pl"><td class="key"><span class="k">FK</span></td><th scope="row">product_id</th><td class="type">int</td></tr>
+                    <tr data-col="quantity"><td class="key"></td><th scope="row">quantity</th><td class="type">int</td></tr>
+                    <tr data-col="unit_price"><td class="key"></td><th scope="row">unit_price</th><td class="type">decimal</td></tr>
+                  </tbody>
+                </table>
+                <i class="roller" aria-hidden="true"></i>
+              </div>
+              <i class="reg" aria-hidden="true"></i><i class="reg" aria-hidden="true"></i><i class="reg" aria-hidden="true"></i><i class="reg" aria-hidden="true"></i>
+            </div>
+            <div class="plate" data-table="product" tabindex="0">
+              <div class="press">
+                <i class="cy" aria-hidden="true"></i><i class="mg" aria-hidden="true"></i><i class="paper" aria-hidden="true"></i>
+                <table>
+                  <caption>PRODUCT</caption>
+                  <tbody>
+                    <tr data-col="product_id" data-key="pk" data-link="pl"><td class="key"><span class="k">PK</span></td><th scope="row">product_id</th><td class="type">int</td></tr>
+                    <tr data-col="product_name"><td class="key"></td><th scope="row">product_name</th><td class="type">varchar</td></tr>
+                    <tr data-col="category"><td class="key"></td><th scope="row">category</th><td class="type">varchar</td></tr>
+                    <tr data-col="unit_price"><td class="key"></td><th scope="row">unit_price</th><td class="type">decimal</td></tr>
+                    <tr data-col="stock_on_hand"><td class="key"></td><th scope="row">stock_on_hand</th><td class="type">int</td></tr>
+                    <tr data-col="reorder_level"><td class="key"></td><th scope="row">reorder_level</th><td class="type">int</td></tr>
+                    <tr data-col="supplier"><td class="key"></td><th scope="row">supplier</th><td class="type">varchar</td></tr>
+                  </tbody>
+                </table>
+                <i class="roller" aria-hidden="true"></i>
+              </div>
+              <i class="reg" aria-hidden="true"></i><i class="reg" aria-hidden="true"></i><i class="reg" aria-hidden="true"></i><i class="reg" aria-hidden="true"></i>
+            </div>
+        </div>
+      </div>
+    </figure>
+    <div class="txt">
+      <ul class="tables">
+        <li data-step="1"><span class="dot" aria-hidden="true">•</span> The <b data-ref="customer">CUSTOMER</b> table contains key customer information for loyalty tracking and marketing purposes. The table has customer_id as the Primary Key (PK), and full_name, email, phone, marketing_consent (for POPIA compliance), and loyalty_points.</li>
+        <li data-step="2"><span class="dot" aria-hidden="true">•</span> The <b data-ref="sale">SALE</b> table contains data about each separate transaction made. It has sale_id as the PK, and sale_datetime, payment_method, and total_amount. The table has customer_id as a Foreign Key (FK) linking it back to the CUSTOMER table.</li>
+        <li data-step="3"><span class="dot" aria-hidden="true">•</span> The <b data-ref="product">Product</b> table acts as the active inventory database for the retail shop. Product_id is the PK in this table, which is also assisted by product_name, category, unit price, stock on hand, reorder level, and supplier information.</li>
+        <li data-step="4"><span class="dot" aria-hidden="true">•</span> The <b data-ref="line_item">Line_Item</b> table acts as the junction table solving the many-to-many relationship between sales and products. Line_id is the PK in this table, whereas sale_id and product_id serve as the FKs.</li>
+      </ul>
+      <p class="erd-notes">
+        <span data-step="5" data-rel="cs">The one-to-many connector from <b data-ref="customer">Customer</b> to <b data-ref="sale">Sale</b> suggests that a customer can make zero or multiple sales in the future; however, a sale belongs to one and only one customer.</span>
+        <span data-step="6" data-rel="sl">Similarly, the one-to-many connector from <b data-ref="sale">Sale</b> to <b data-ref="line_item">Line Item</b> shows one sale can contain one or many line items (products bought during the sale).</span>
+        <span data-step="7" data-rel="pl">The one-to-many connector from <b data-ref="product">Product</b> to <b data-ref="line_item">Line Item</b> also shows that a particular retail product can be present in multiple line items in various customer sales.</span>
+      </p>
+    </div>
   </div>
-  <figure class="erd" data-reveal="1" tabindex="0" aria-labelledby="erd-h">
-    <img src="assets/erd.png" width="1138" height="643" alt="Entity Relationship Diagram" loading="lazy">
-  </figure>
-  <ul class="tables">
-    <li data-reveal="1"><span class="dot" aria-hidden="true">•</span> The <b>CUSTOMER</b> table contains key customer information for loyalty tracking and marketing purposes. The table has customer_id as the Primary Key (PK), and full_name, email, phone, marketing_consent (for POPIA compliance), and loyalty_points.</li>
-    <li data-reveal="1"><span class="dot" aria-hidden="true">•</span> The <b>SALE</b> table contains data about each separate transaction made. It has sale_id as the PK, and sale_datetime, payment_method, and total_amount. The table has customer_id as a Foreign Key (FK) linking it back to the CUSTOMER table.</li>
-    <li data-reveal="1"><span class="dot" aria-hidden="true">•</span> The <b>Product</b> table acts as the active inventory database for the retail shop. Product_id is the PK in this table, which is also assisted by product_name, category, unit price, stock on hand, reorder level, and supplier information.</li>
-    <li data-reveal="1"><span class="dot" aria-hidden="true">•</span> The <b>Line_Item</b> table acts as the junction table solving the many-to-many relationship between sales and products. Line_id is the PK in this table, whereas sale_id and product_id serve as the FKs.</li>
-  </ul>
-  <p class="erd-notes">
-    <span data-reveal="1">The one-to-many connector from <b>Customer</b> to <b>Sale</b> suggests that a customer can make zero or multiple sales in the future; however, a sale belongs to one and only one customer.</span>
-    <span data-reveal="1">Similarly, the one-to-many connector from <b>Sale</b> to <b>Line Item</b> shows one sale can contain one or many line items (products bought during the sale).</span>
-    <span data-reveal="1">The one-to-many connector from <b>Product</b> to <b>Line Item</b> also shows that a particular retail product can be present in multiple line items in various customer sales.</span>
-  </p>
 </section>
 
 <section class="pedagogy gutter" aria-labelledby="ped-h">
   <div class="section-head" data-reveal="1">
     <h2 id="ped-h">Design and Pedagogy of Reasoning</h2>
+  </div>
+  <div class="ped-card" data-reveal="1">
     <p>Data mismanagement, such as data input errors in spreadsheets and inventory loss that is not accounted for, is the main issue that small retail organizations face in terms of operations. Topic 1 was chosen to show non-technical owners how transactional data gets transformed using the DIKW paradigm into retail knowledge. Also, using an ERD and sales dashboard, we show how relational database tables remove data redundancy and allow one to see stock levels instantly.</p>
   </div>
 </section>
@@ -158,7 +297,8 @@
 
 </div>
 
-<script src="assets/motion.js"></script>
-<script src="assets/data.js"></script>
+<script src="assets/motion.js?v=2e4f1580"></script>
+<script src="assets/erd.js?v=0fff10bc"></script>
+<script src="assets/data.js?v=eaae8661"></script>
 </body>
 </html>

@@ -1,0 +1,266 @@
+/* ERD press run. The group's figure rebuilt as four real tables in its 2x2
+   arrangement, with crow's-foot connectors that erd.js measures from the rows.
+   Without JS (or with reduced motion) the section is a plain stacked figure:
+   every value below defaults to the printed state, and the animated start
+   states live under .js .erd-press:not(.calm). */
+
+/* ---------- Shared type and cards ---------- */
+.erd-press h2 {
+  margin: 0; font-size: clamp(32px, 3.5vw, 54px); line-height: 1.02; letter-spacing: -.02em; font-weight: 600;
+  text-wrap: balance;
+}
+.erd-press .lede p { margin: 0; max-width: 34ch; font-size: clamp(19px, 1.7vw, 23px); line-height: 1.45; font-style: italic; color: var(--color-accent-800); text-wrap: pretty; }
+.erd-press .tables { list-style: none; margin: 0; padding: 0; }
+.erd-press .tables li {
+  font-size: 17px; line-height: 1.5; padding: var(--space-4) 22px; max-width: 46ch;
+  background: var(--color-neutral-100); box-shadow: var(--shadow-sm); text-wrap: pretty;
+}
+.erd-press .tables .dot { color: var(--color-accent); margin-right: 4px; }
+.erd-press .erd-notes { margin: 0; }
+.erd-press .erd-notes > span { display: block; font-size: clamp(18px, 1.5vw, 20px); line-height: 1.5; font-style: italic; color: var(--color-accent-800); max-width: 40ch; text-wrap: pretty; }
+.erd-press .erd-notes b { font-style: normal; color: var(--color-text); }
+
+/* Table names in the prose: an underline in that table's ink draws in while its
+   step is up, or while the table is lit by hover/focus. */
+.erd-press b[data-ref] {
+  font-weight: 600; --u: var(--color-accent-600);
+  background: linear-gradient(var(--u), var(--u)) 0 100% / 0 2px no-repeat;
+  padding-bottom: 1px; transition: background-size .5s cubic-bezier(.2, .8, .2, 1);
+}
+.erd-press b[data-ref="line_item"] { --u: var(--color-accent-2-600); }
+.erd-press b[data-ref="product"] { --u: var(--color-process-yellow); background-size: 0 4px; }
+.erd-press .cur b[data-ref], .erd-press b[data-ref].lit { background-size: 100% 2px; }
+.erd-press .cur b[data-ref="product"], .erd-press b[data-ref="product"].lit { background-size: 100% 4px; }
+
+/* Seven segments, one per table and connector, fill as the steps pass. */
+.erd-press .progress { display: flex; gap: 6px; max-width: 320px; }
+.erd-press .progress i { flex: 1; height: 6px; background: var(--color-neutral-200); position: relative; overflow: hidden; }
+.erd-press .progress i::after { content: ""; position: absolute; inset: 0; background: var(--color-accent); transform-origin: left; transition: transform .5s cubic-bezier(.2, .8, .2, 1); }
+.erd-press .progress i:nth-child(n+5)::after { background: var(--color-accent-2); }
+.js .erd-press .progress i:not(.on)::after { transform: scaleX(0); }
+
+/* ---------- The sheet ---------- */
+.erd-press .sheet {
+  margin: 0; padding: 24px; background: var(--color-bg); box-shadow: var(--shadow-md);
+  outline: 1px solid var(--color-neutral-200); outline-offset: -10px; min-width: 0;
+}
+.erd-press .win { position: relative; }
+.erd-press .canvas { position: relative; width: 760px; height: 560px; transform-origin: 0 0; }
+
+/* Dotted slots where each table will print (pinned mode only). */
+.erd-press .slots i {
+  position: absolute; opacity: 0;
+  background: radial-gradient(circle, var(--color-neutral-300) 1.1px, transparent 1.5px) 3px 3px / 6px 6px;
+  outline: 1px dashed var(--color-neutral-300); outline-offset: 4px;
+}
+.erd-press [data-of="customer"] { left: 0; top: 0; width: 296px; height: 214px; }
+.erd-press [data-of="sale"] { left: 464px; top: 0; width: 296px; height: 184px; }
+.erd-press [data-of="line_item"] { left: 24px; top: 300px; width: 248px; height: 184px; }
+.erd-press [data-of="product"] { left: 472px; top: 300px; width: 288px; height: 244px; }
+
+/* Paper sheets fanned behind a "many" table while its connector draws. */
+.erd-press .ghost {
+  position: absolute; display: block; opacity: 0;
+  background: var(--color-neutral-100); box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-text) 28%, transparent), var(--shadow-sm);
+}
+html:not(.js) .erd-press .ghost { display: none; }
+
+/* Connectors */
+.erd-press svg.ink { position: absolute; left: 0; top: 0; width: 760px; height: 560px; overflow: visible; pointer-events: none; }
+.erd-press svg.ink path { fill: none; }
+.erd-press svg.ink .hit { stroke: transparent; stroke-width: 12; pointer-events: stroke; cursor: default; }
+.erd-press svg.ink .base { stroke: var(--color-neutral-400); stroke-width: 1; stroke-dasharray: 2 3; }
+.erd-press svg.ink .ink { stroke: var(--color-text); stroke-width: 1.6; stroke-dasharray: 1 1; stroke-linejoin: round; transition: stroke-width .3s; }
+.erd-press svg.ink .ghost { stroke: var(--color-accent-2); stroke-opacity: .6; stroke-width: 1.6; stroke-dasharray: 1 1; transform: translate(calc(var(--press-nx, 0) * .5px + .5px), .5px); }
+.erd-press svg.ink line { stroke: var(--color-text); stroke-width: 1.6; stroke-linecap: square; transition: stroke .3s; }
+.erd-press svg.ink .one { transform-box: fill-box; transform-origin: center; }
+.erd-press svg.ink .dot { fill: var(--color-accent); opacity: 0; }
+.erd-press svg.ink .dot.m, .erd-press svg.ink .hdot.m { fill: var(--color-accent-2); }
+.erd-press svg.ink .hdot { fill: var(--color-accent); opacity: 0; }
+.erd-press svg.ink g[data-rel] { transition: opacity .35s; }
+
+/* ---------- Plates (the four tables) ---------- */
+.erd-press .plate { position: absolute; z-index: 3; outline: none; transition: opacity .35s; }
+.erd-press .plate[data-table="customer"] { left: 0; top: 0; width: 296px; }
+.erd-press .plate[data-table="sale"] { left: 464px; top: 0; width: 296px; }
+.erd-press .plate[data-table="line_item"] { left: 24px; top: 300px; width: 248px; }
+.erd-press .plate[data-table="product"] { left: 472px; top: 300px; width: 288px; }
+.erd-press .plate:focus-visible .paper { outline: 2px solid var(--color-accent-700); outline-offset: 3px; }
+
+.erd-press .press {
+  position: relative; isolation: isolate;
+  --o: 1; --ty: 0; --rot: 0; --mis: 0; --roll: 1; --rv: 0;
+  opacity: var(--o); transform: translateY(calc(var(--ty) * 1px)) rotate(calc(var(--rot) * 1deg));
+}
+.erd-press .plate.moving .press { will-change: transform, opacity; }
+.erd-press .press > i { position: absolute; inset: 0; display: block; }
+.erd-press .press .cy, .erd-press .press .mg { mix-blend-mode: multiply; }
+.erd-press .press .cy { background: var(--color-accent-200); transform: translate(calc(var(--mis) * 14px + var(--press-nx, 0) * .5px), calc(var(--mis) * -6px)); }
+.erd-press .press .mg { background: var(--color-accent-2-200); transform: translate(calc(var(--mis) * -10px - var(--press-nx, 0) * .5px), calc(var(--mis) * 8px)); }
+.erd-press .press .paper { background: var(--color-neutral-100); box-shadow: 0 0 0 1px var(--color-text), var(--shadow-md); }
+
+.erd-press table {
+  position: relative; width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 0;
+  font-family: var(--font-body); font-size: 14px; line-height: 30px; color: var(--color-text);
+  clip-path: inset(0 0 calc((1 - var(--roll)) * 100%) 0);
+}
+
+.erd-press caption {
+  height: 34px; line-height: 34px; padding: 0 10px; font-weight: 600; letter-spacing: .04em; font-size: 14.5px;
+  box-shadow: inset 0 -2px 0 var(--color-text); text-align: center;
+}
+.erd-press td, .erd-press th {
+  height: 30px; padding: 0 10px; white-space: nowrap; overflow: hidden; text-overflow: clip;
+  text-align: left; font-weight: 400; vertical-align: middle;
+  background: color-mix(in srgb, var(--color-accent-100) calc(var(--lt, 0) * 100%), transparent);
+  transition: background-color .35s;
+}
+.erd-press td.key { width: 44px; padding: 0; text-align: center; border-right: 1px solid var(--color-text); }
+.erd-press td.type { width: 84px; color: var(--color-neutral-600); border-left: 1px solid var(--color-text); }
+.erd-press [data-table="line_item"] td.type { width: 80px; }
+
+/* PK and FK chips: cyan for the one side, magenta for the many side. */
+.erd-press .k {
+  --st: 1; --ring: 0;
+  display: inline-block; vertical-align: middle; font-size: 10.5px; line-height: 1; font-weight: 600; letter-spacing: .06em;
+  padding: 4px 5px 3px; color: var(--color-accent-800); background: var(--color-accent-100);
+  box-shadow: inset 0 0 0 1px var(--color-accent-300), 0 0 0 calc(var(--ring) * 8px) color-mix(in srgb, var(--color-accent-2) 40%, transparent);
+  opacity: var(--st); transform: scale(calc(1.8 - .8 * var(--st))) rotate(calc((1 - var(--st)) * -8deg));
+}
+.erd-press tr[data-key="fk"] .k { color: var(--color-accent-2-700); background: var(--color-accent-2-100); box-shadow: inset 0 0 0 1px var(--color-accent-2-300), 0 0 0 calc(var(--ring) * 8px) color-mix(in srgb, var(--color-accent-2) 40%, transparent); }
+
+/* The roller: a hairline that prints the rows as it passes down. */
+.erd-press .press .roller {
+  inset: auto -6px auto -6px; top: calc(var(--roll) * 100%); height: 2px; z-index: 2;
+  background: var(--color-text); box-shadow: 0 6px 10px color-mix(in srgb, var(--color-text) 22%, transparent);
+  opacity: var(--rv);
+}
+
+/* Registration crosshairs at each corner, shown briefly as a plate registers. */
+.erd-press .reg {
+  --reg: 0; --rs: 1;
+  position: absolute; width: 22px; height: 22px; margin: -11px; pointer-events: none;
+  opacity: var(--reg); transform: scale(var(--rs));
+  background: linear-gradient(var(--color-text), var(--color-text)) center / 1px 100% no-repeat,
+              linear-gradient(var(--color-text), var(--color-text)) center / 100% 1px no-repeat;
+}
+.erd-press .reg::before { content: ""; position: absolute; inset: 4px; border: 1px solid var(--color-text); border-radius: 50%; }
+.erd-press .reg:nth-of-type(1) { left: -6px; top: -6px; }
+.erd-press .reg:nth-of-type(2) { right: -6px; top: -6px; margin-right: -11px; }
+.erd-press .reg:nth-of-type(3) { left: -6px; bottom: -6px; margin-bottom: -11px; }
+.erd-press .reg:nth-of-type(4) { right: -6px; bottom: -6px; margin-right: -11px; margin-bottom: -11px; }
+
+/* ---------- Lit state: a connector step, or hover/focus on a key or wire ---------- */
+.erd-press.focus .plate:not(.on) { opacity: .45; }
+.erd-press.focus svg.ink g[data-rel]:not(.on) { opacity: .3; }
+.erd-press svg.ink g.on .ink { stroke-width: 2.25; }
+.erd-press svg.ink g.on .one line { stroke: var(--color-accent-700); }
+.erd-press svg.ink g.on .many line { stroke: var(--color-accent-2-700); }
+.erd-press tr.lit[data-key="pk"] > * { background-color: var(--color-accent-100); }
+.erd-press tr.lit[data-key="fk"] > * { background-color: var(--color-accent-2-100); }
+.erd-press.calm * { transition: none !important; }
+
+/* ---------- Static layout: no JS, reduced motion ---------- */
+html:not(.js) .erd-press, .erd-press.calm { padding-top: clamp(60px, 10vh, 120px); padding-bottom: clamp(60px, 10vh, 120px); }
+html:not(.js) .erd-press .stage, .erd-press.calm .stage { display: flex; flex-direction: column; gap: var(--space-8); }
+html:not(.js) .erd-press .lede-wrap, .erd-press.calm .lede-wrap { display: flex; flex-direction: column; gap: var(--space-4); max-width: 760px; }
+html:not(.js) .erd-press .progress, .erd-press.calm .progress { display: none; }
+html:not(.js) .erd-press .sheet, .erd-press.calm .sheet { align-self: flex-start; max-width: 100%; }
+html:not(.js) .erd-press .win, .erd-press.calm .win { overflow-x: auto; overscroll-behavior-x: contain; max-width: 100%; }
+/* Room inside the scroll box for the table outlines and the stacked sheets. */
+html:not(.js) .erd-press .sheet, .erd-press.calm .sheet { padding: 22px 4px 4px 22px; }
+html:not(.js) .erd-press .win, .erd-press.calm .win { padding: 2px 20px 20px 2px; }
+html:not(.js) .erd-press .txt, .erd-press.calm .txt { display: flex; flex-direction: column; gap: var(--space-8); }
+html:not(.js) .erd-press .tables, .erd-press.calm .tables { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: var(--space-6); }
+html:not(.js) .erd-press .tables li, .erd-press.calm .tables li { max-width: none; }
+html:not(.js) .erd-press .erd-notes, .erd-press.calm .erd-notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: var(--space-6); }
+.erd-press.calm [data-step] { opacity: 1 !important; transform: none !important; }
+
+/* ---------- Pinned layout (JS on, motion allowed) ---------- */
+.js .erd-press:not(.calm) { height: 880vh; }
+.js .erd-press:not(.calm) .stage {
+  position: sticky; top: 0; height: 100vh;
+  padding-top: clamp(96px, 13vh, 128px); padding-bottom: clamp(24px, 5vh, 48px);
+  display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1.5fr);
+  grid-template-rows: auto auto minmax(0, 1fr); grid-template-areas: "head fig" "prog fig" "steps fig";
+  column-gap: clamp(32px, 4vw, 64px); row-gap: var(--space-4); align-items: start;
+}
+.js .erd-press:not(.calm) .lede-wrap { display: contents; }
+.js .erd-press:not(.calm) h2 { grid-area: head; }
+.js .erd-press:not(.calm) .progress { grid-area: prog; margin: 4px 0 var(--space-4); }
+.js .erd-press:not(.calm) .lede, .js .erd-press:not(.calm) .txt { grid-area: steps; position: relative; min-height: 0; height: 100%; }
+/* The sheet hugs the scaled canvas (erd.js sets .win's size), sits on the
+   right gutter and lines its top up with the heading. */
+.js .erd-press:not(.calm) .sheet { grid-area: fig; align-self: start; justify-self: end; margin-top: 4px; }
+.js .erd-press:not(.calm) .win { overflow: visible; }
+.js .erd-press:not(.calm) [data-step] { opacity: 0; }
+.js .erd-press:not(.calm) .txt [data-step] { position: absolute; left: 0; right: 0; top: 0; }
+.js .erd-press:not(.calm) .tables li { padding: var(--space-4) 20px; }
+
+/* Start states for the press, overwritten frame by frame by erd.js. */
+.js .erd-press:not(.calm) .press { --o: 0; --roll: 0; --mis: 1; }
+.js .erd-press:not(.calm) .k { --st: 0; }
+.js .erd-press:not(.calm) svg.ink .ink, .js .erd-press:not(.calm) svg.ink .ghost { stroke-dashoffset: 1; }
+.js .erd-press:not(.calm) svg.ink .one { transform: scaleY(0); }
+.js .erd-press:not(.calm) svg.ink .many { opacity: 0; }
+
+/* Pointer life on the plates is for fine pointers only. */
+@media (pointer: coarse) {
+  .erd-press .press .cy, .erd-press .press .mg, .erd-press svg.ink .ghost { --press-nx: 0; }
+}
+
+/* Laptops: a narrower text column so the sheet keeps its type size. */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .js .erd-press:not(.calm) .stage { grid-template-columns: minmax(0, .64fr) minmax(0, 1.5fr); }
+  .js .erd-press:not(.calm) .sheet { padding: 16px; }
+  .erd-press .tables li { font-size: 16px; }
+}
+
+/* Tablet and narrow desktop windows: sheet on top, text below. */
+@media (max-width: 1023px) {
+  .js .erd-press:not(.calm) .stage {
+    grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto minmax(0, 1fr);
+    grid-template-areas: "head" "fig" "prog" "steps"; padding-top: 104px; row-gap: var(--space-3);
+  }
+  .js .erd-press:not(.calm) .sheet { align-self: start; justify-self: stretch; margin-top: 0; padding: 16px; }
+  .js .erd-press:not(.calm) .progress { margin: var(--space-2) 0 0; }
+  .erd-press .tables li { font-size: 16px; max-width: 60ch; }
+  .erd-press .erd-notes > span, .erd-press .lede p { max-width: 56ch; }
+}
+
+/* Portrait tablets: the step card spans the column under the sheet. */
+@media (min-width: 761px) and (max-width: 1023px) {
+  .js .erd-press:not(.calm) .tables li { max-width: none; }
+}
+/* Tall portrait tablets: the width caps the sheet's size, so drop the block
+   lower to share the spare height above and below it. */
+@media (min-width: 761px) and (max-width: 1023px) and (orientation: portrait) {
+  .js .erd-press:not(.calm) .stage { padding-top: clamp(104px, calc((100vh - 760px) / 2), 220px); }
+  .js .erd-press:not(.calm) .erd-notes > span, .js .erd-press:not(.calm) .lede p { max-width: 64ch; }
+}
+
+/* Phones: the sheet is a camera window; erd.js moves the canvas inside it. */
+@media (max-width: 760px) {
+  .js .erd-press:not(.calm) { height: 720vh; }
+  .js .erd-press:not(.calm) .stage { padding-top: 100px; padding-bottom: var(--space-3); row-gap: var(--space-2); }
+  .js .erd-press:not(.calm) h2 { font-size: 22px; letter-spacing: -.01em; }
+  .js .erd-press:not(.calm) .sheet { height: clamp(210px, min(50vh, 100vh - 420px), 440px); padding: 8px; outline-offset: -4px; }
+  .js .erd-press:not(.calm) .win { height: 100%; overflow: hidden; }
+  .js .erd-press:not(.calm) .progress { margin: var(--space-1) 0 var(--space-1); max-width: none; }
+  .erd-press .tables li { font-size: 15.5px; line-height: 1.45; padding: var(--space-3) var(--space-3); }
+  .erd-press .erd-notes > span { font-size: 16.5px; line-height: 1.45; }
+  .erd-press .lede p { font-size: 18px; }
+  html:not(.js) .erd-press .sheet, .erd-press.calm .sheet { padding: 12px 2px 2px 12px; }
+}
+
+/* Phones without the pinned press (scripts off, or reduced motion): the four
+   tables stack at full size instead of a 2x2 sheet too wide for the screen.
+   The keys on each row carry the links; the drawn connectors need the 2x2. */
+@media (max-width: 760px) {
+  html:not(.js) .erd-press .sheet, .erd-press.calm .sheet { align-self: stretch; padding: var(--space-4); }
+  html:not(.js) .erd-press .win, .erd-press.calm .win { overflow: visible; padding: 0; }
+  html:not(.js) .erd-press .canvas, .erd-press.calm .canvas { width: auto; height: auto; display: flex; flex-direction: column; gap: var(--space-6); }
+  html:not(.js) .erd-press .plate, .erd-press.calm .plate { position: relative; left: auto; top: auto; width: 100%; max-width: 340px; }
+  html:not(.js) .erd-press svg.ink, html:not(.js) .erd-press .slots, html:not(.js) .erd-press .ghosts,
+  .erd-press.calm svg.ink, .erd-press.calm .slots, .erd-press.calm .ghosts { display: none; }
+}

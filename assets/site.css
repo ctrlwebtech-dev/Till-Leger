@@ -79,5 +79,6 @@ a:hover { color: var(--color-accent-800); }
   /* Drop the topic numbers so all six links fit a 390px screen; the row still scrolls on narrower ones. */
   .site-nav .links small { display: none; }
   @media (max-width: 420px) { .site-nav .links { gap: 10px; font-size: 13px; } }
+  @media (max-width: 380px) { .site-nav .links { gap: 7px; font-size: 12px; } }
   .hero .float { top: calc(var(--top) * .8 + 30px); font-size: 15px; }
 }

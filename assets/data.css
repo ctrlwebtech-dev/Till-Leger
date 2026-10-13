@@ -1,50 +1,78 @@
 /* Data page: hero, DIKW pinned scroll, quality groups, ERD, pedagogy note. */
 
-/* Hero: the topic heading is longer than the design's, so it runs smaller. */
+/* Hero: the topic heading is longer than the design's, so it runs smaller.
+   Two ERD records float behind it like proof sheets pinned to the wall. */
 .hero h1 { font-size: clamp(44px, 7.4vw, 120px); }
-.hero .float.acc { background: var(--color-accent-100); color: var(--color-accent-900); }
-.hero .float.warn { color: var(--color-accent-2-700); }
+.hero .float.rec {
+  width: 214px; padding: var(--space-4); box-shadow: var(--shadow-lg);
+  display: flex; flex-direction: column; gap: 7px; font-size: 14px; line-height: 1.2;
+}
+.hero .float.rec b {
+  font-weight: 600; font-size: 15px; letter-spacing: .08em;
+  padding-bottom: var(--space-2); margin-bottom: 2px; border-bottom: 1.5px solid currentColor;
+}
+.hero .float.rec span { display: flex; align-items: center; gap: var(--space-2); }
+.hero .float.rec span::before { content: ""; flex: none; width: 14px; height: 6px; background: var(--color-neutral-300); }
+.hero .float.rec span.pk::before { background: var(--color-accent-2); }
+.hero .float.rec span.fk::before { background: var(--color-accent); }
+.hero .float.rec.sale { width: 200px; background: var(--color-accent-100); color: var(--color-accent-900); }
+.hero .float.rec.sale span::before { background: var(--color-accent-300); }
+.hero .float.rec.sale span.pk::before { background: var(--color-accent-2); }
+.hero .float.rec.sale span.fk::before { background: var(--color-accent-700); }
+.hero .float.key { font-weight: 600; letter-spacing: .06em; }
+.hero .float.key.dark { background: var(--color-text); color: var(--color-bg); box-shadow: none; font-size: 18px; }
+.hero .float.key.tag { background: color-mix(in srgb, var(--color-process-yellow) 32%, var(--color-bg)); font-size: 22px; }
 
-/* DIKW pinned scroll */
+/* DIKW pinned scroll: heading, level progress and the current step on the
+   left; the pyramid builds on the right with its level names beside it. */
 .dikw { position: relative; height: 620vh; }
 .dikw .stage {
   position: sticky; top: 0; height: 100vh;
-  padding-top: clamp(90px, 12vh, 120px); padding-bottom: var(--space-6);
+  padding-top: clamp(96px, 13vh, 128px); padding-bottom: var(--space-6);
   display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
   gap: clamp(24px, 4vw, 64px); align-items: center;
 }
-.dikw .steps { position: relative; height: min(68vh, 600px); }
-.dikw .steps-head { position: absolute; top: 0; left: 0; right: 0; margin: 0; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.1; letter-spacing: -.01em; font-weight: 600; max-width: 22ch; }
-.dikw .step { position: absolute; left: 0; right: 0; top: 24%; display: flex; flex-direction: column; gap: var(--space-4); }
+.dikw .steps { position: relative; height: min(74vh, 640px); display: flex; flex-direction: column; }
+.dikw .steps-head { margin: 0; font-size: clamp(28px, 2.9vw, 44px); line-height: 1.05; letter-spacing: -.015em; font-weight: 600; max-width: 24ch; }
+.dikw .progress { display: flex; gap: 6px; max-width: 320px; margin-top: var(--space-4); }
+.dikw .progress i { flex: 1; height: 8px; background: var(--color-neutral-200); position: relative; overflow: hidden; }
+.dikw .progress i::after { content: ""; position: absolute; inset: 0; background: var(--color-accent-2); transform-origin: left; transition: transform .5s cubic-bezier(.2, .8, .2, 1); }
+.js .dikw .progress i:not(.on)::after { transform: scaleX(0); }
+.dikw .stack { position: relative; flex: 1; margin-top: clamp(24px, 5vh, 48px); }
+.dikw .step { position: absolute; left: 0; right: 0; top: 0; display: flex; flex-direction: column; gap: var(--space-4); }
 .js .dikw .step { opacity: 0; }
-.dikw .step .plus { font-size: clamp(40px, 5vw, 76px); line-height: 1; letter-spacing: -.02em; font-weight: 600; }
-.dikw .step p { margin: 0; max-width: 40ch; font-size: clamp(17px, 1.45vw, 20px); line-height: 1.5; text-wrap: pretty; }
-.dikw .step.intro p { font-size: clamp(19px, 1.75vw, 24px); line-height: 1.45; font-style: italic; color: var(--color-accent-800); }
+.dikw .step .plus { font-size: clamp(44px, 5vw, 80px); line-height: 1; letter-spacing: -.02em; font-weight: 600; }
+.dikw .step p { margin: 0; max-width: 40ch; font-size: clamp(17px, 1.45vw, 20px); line-height: 1.55; text-wrap: pretty; }
+.dikw .step.intro p { font-size: clamp(19px, 1.75vw, 25px); line-height: 1.45; font-style: italic; color: var(--color-accent-800); max-width: 34ch; }
 
-.dikw .scene { position: relative; height: min(70vh, 620px); display: flex; align-items: center; justify-content: center; perspective: 1400px; }
-.dikw .rail { position: absolute; left: 0; top: 12%; bottom: 12%; width: 2px; background: var(--color-neutral-200); }
+.dikw .scene { position: relative; height: min(74vh, 640px); display: flex; align-items: center; justify-content: center; perspective: 1400px; }
+.dikw .rail { position: absolute; left: 0; top: 10%; bottom: 10%; width: 2px; background: var(--color-neutral-200); }
 .dikw .rail > div { position: absolute; left: 0; right: 0; bottom: 0; height: 100%; background: var(--color-accent-2); transform-origin: bottom; }
-.dikw .pyr { position: relative; width: min(480px, 38vw); aspect-ratio: 1 / .92; transform-style: preserve-3d; }
+.dikw .pyr { position: relative; width: min(520px, 30vw, 54vh); aspect-ratio: 1 / 1.02; margin-right: clamp(90px, 10vw, 170px); transform-style: preserve-3d; }
 .dikw .layer { position: absolute; left: 0; right: 0; height: 25%; will-change: transform; }
 .js .dikw .layer { opacity: 0; }
 .dikw .layer [data-face] { position: absolute; inset: 0; }
-.dikw .layer > span { position: absolute; left: 0; right: 0; bottom: 22%; text-align: center; font-weight: 600; font-size: clamp(15px, 1.5vw, 22px); padding-left: 14%; }
-.dikw [data-layer="0"] { top: 75%; }
+/* Level names sit just outside each layer's right slope, on a short rule. */
+.dikw .layer > span {
+  position: absolute; top: 50%; left: calc(var(--x) + 6px); transform: translateY(-50%);
+  padding-left: 34px; white-space: nowrap; font-weight: 600; font-size: clamp(15px, 1.35vw, 21px);
+  color: var(--color-neutral-700); transition: color .4s;
+}
+.dikw .layer > span::before { content: ""; position: absolute; left: 6px; top: 50%; width: 20px; height: 1.5px; background: currentColor; transform-origin: left center; transition: transform .4s; }
+.dikw .layer.on > span { color: var(--color-accent-2-700); }
+.dikw .layer.on > span::before { transform: scale(1.2, 1.33); }
+.dikw [data-layer="0"] { top: 75%; --x: 93.75%; }
 .dikw [data-layer="0"] [data-face="L"] { background: var(--color-neutral-400); }
 .dikw [data-layer="0"] [data-face="R"] { background: var(--color-neutral-300); }
-.dikw [data-layer="0"] > span { color: var(--color-text); }
-.dikw [data-layer="1"] { top: 50%; }
+.dikw [data-layer="1"] { top: 50%; --x: 81.25%; }
 .dikw [data-layer="1"] [data-face="L"] { background: var(--color-accent-300); }
 .dikw [data-layer="1"] [data-face="R"] { background: var(--color-accent-200); }
-.dikw [data-layer="1"] > span { color: var(--color-accent-900); }
-.dikw [data-layer="2"] { top: 25%; }
+.dikw [data-layer="2"] { top: 25%; --x: 68.75%; }
 .dikw [data-layer="2"] [data-face="L"] { background: var(--color-accent-500); }
 .dikw [data-layer="2"] [data-face="R"] { background: var(--color-accent-400); }
-.dikw [data-layer="2"] > span { color: var(--color-accent-900); font-size: clamp(14px, 1.3vw, 20px); padding-left: 12%; }
-.dikw [data-layer="3"] { top: 0; }
+.dikw [data-layer="3"] { top: 0; --x: 56.25%; }
 .dikw [data-layer="3"] [data-face="L"] { background: var(--color-accent-800); }
 .dikw [data-layer="3"] [data-face="R"] { background: var(--color-accent-700); }
-.dikw [data-layer="3"] > span { color: var(--color-bg); bottom: 8%; font-size: clamp(12px, 1vw, 15px); padding-left: 0; }
 .dikw .chip {
   position: absolute; left: 0; top: 0; white-space: nowrap; padding: 3px 8px; font-size: 14px;
   background: var(--color-neutral-100); box-shadow: var(--shadow-sm); color: var(--color-text); opacity: 0;
@@ -55,46 +83,104 @@
 .plus { font-size: 16px; color: var(--color-accent-2-700); font-style: italic; }
 .dot { color: var(--color-accent); margin-right: 4px; }
 
-/* Information quality: four groups, seven criteria */
-.quality { padding-top: clamp(80px, 14vh, 160px); padding-bottom: clamp(80px, 14vh, 160px); display: flex; flex-direction: column; gap: var(--space-8); }
-.quality .grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: var(--space-8) var(--space-6); }
-.quality .test { display: flex; flex-direction: column; gap: var(--space-3); padding-top: var(--space-4); border-top: 1.5px solid var(--color-text); }
-.quality .test h3 { margin: 0; font-size: 26px; line-height: 1.15; font-weight: 600; }
-.quality .test h3 .it { display: block; margin-top: 6px; font-size: 17px; line-height: 1.4; color: var(--color-accent-800); }
-.quality .test ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
-.quality .test li { font-size: 17px; line-height: 1.5; }
-.quality .test li b { font-weight: 600; color: var(--color-accent-2-700); }
+/* Seven-cell strip: one cell per criterion. A card lights its own group's
+   cells; the strip under the section heading collects every group seen. */
+.seven { display: flex; gap: 4px; }
+.seven i { flex: 1; height: 8px; background: var(--color-neutral-200); position: relative; overflow: hidden; }
+.seven i::after { content: ""; position: absolute; inset: 0; background: var(--color-accent-2); transform-origin: left; transition: transform .45s cubic-bezier(.2, .8, .2, 1); }
+.seven i:nth-child(2)::after { transition-delay: .06s; }
+.seven i:nth-child(3)::after { transition-delay: .12s; }
+.seven i:nth-child(4)::after { transition-delay: .18s; }
+.seven i:nth-child(5)::after { transition-delay: .24s; }
+.seven i:nth-child(6)::after { transition-delay: .30s; }
+.seven i:nth-child(7)::after { transition-delay: .36s; }
+.seven:not(.big) i:not(.g)::after { transform: scaleX(0); }
+.js .test:not(.on) .seven i::after { transform: scaleX(0); }
+.js .seven.big i:not(.on)::after { transform: scaleX(0); }
+.seven.big { max-width: 380px; gap: 6px; }
+.seven.big i { height: 10px; }
 
-/* ERD */
-.erd-section { padding-top: clamp(60px, 10vh, 120px); padding-bottom: clamp(60px, 10vh, 120px); display: flex; flex-direction: column; gap: var(--space-8); }
-.erd-section .tables { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: var(--space-6); }
-.erd-section .tables li { font-size: 17px; line-height: 1.5; padding: var(--space-4) 20px; background: var(--color-neutral-100); box-shadow: var(--shadow-sm); }
-.erd-section .tables b { font-weight: 600; color: var(--color-accent-700); }
-.erd { margin: 0; padding: var(--space-4); background: var(--color-neutral-100); box-shadow: var(--shadow-md); }
-.erd img { display: block; max-width: 100%; height: auto; }
-.erd:focus-visible { outline: 2px solid var(--color-accent-700); outline-offset: 3px; }
-.erd-notes { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: var(--space-6); font-size: 18px; line-height: 1.5; }
-.erd-notes b { font-weight: 600; }
+/* Information quality: heading and strip stay put while four group cards scroll. */
+.quality {
+  padding-top: clamp(80px, 12vh, 140px); padding-bottom: clamp(60px, 10vh, 120px);
+  display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  gap: clamp(32px, 5vw, 80px); align-items: start;
+}
+.q-side { position: sticky; top: 120px; display: flex; flex-direction: column; gap: var(--space-6); }
+.quality .grid { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-6); }
+.quality .test {
+  display: flex; flex-direction: column; gap: var(--space-4);
+  padding: clamp(24px, 2.8vw, 40px); background: var(--color-neutral-100); box-shadow: var(--shadow-sm);
+}
+.quality .t-top { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+.quality .t-top .plus { font-size: 18px; }
+.quality .t-top .seven { flex: none; width: 150px; }
+.quality .test h3 { margin: 0; font-size: clamp(26px, 2.5vw, 36px); line-height: 1.08; letter-spacing: -.01em; font-weight: 600; }
+.quality .test h3 .it { display: block; margin-top: var(--space-2); font-size: 17px; line-height: 1.4; letter-spacing: 0; color: var(--color-accent-800); }
+.quality .test ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.quality .test li {
+  position: relative; padding: var(--space-3) 0 var(--space-3) 22px; border-top: 1px solid var(--color-divider);
+  font-size: 17px; line-height: 1.5; color: var(--color-neutral-800); text-wrap: pretty;
+}
+.quality .test li:last-child { padding-bottom: 0; }
+.quality .test li .dot { position: absolute; left: 0; top: var(--space-3); margin: 0; color: var(--color-accent-2); }
+.quality .test li b { display: block; margin-bottom: 2px; font-size: 19px; font-weight: 600; color: var(--color-text); }
 
-/* Pedagogy note */
-.pedagogy { padding-top: clamp(40px, 8vh, 100px); padding-bottom: clamp(80px, 14vh, 160px); }
-.pedagogy .section-head p { max-width: 60ch; font-size: clamp(19px, 1.6vw, 22px); }
+/* ERD: styles live in assets/erd.css. */
 
-/* Phones: stack the pinned DIKW stage, pyramid above the text */
-@media (max-width: 760px) {
+/* Pedagogy: heading beside a card holding the whole paragraph. */
+.pedagogy {
+  padding-top: clamp(60px, 10vh, 120px); padding-bottom: clamp(60px, 10vh, 120px);
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: clamp(32px, 5vw, 80px); align-items: start;
+}
+.pedagogy .section-head { max-width: 560px; }
+.pedagogy .ped-card { background: var(--color-neutral-100); padding: var(--space-6); }
+.pedagogy .ped-card p { margin: 0; font-size: 19px; line-height: 1.55; text-wrap: pretty; }
+
+/* Tablets: the quality cards sit two across under the heading. */
+@media (max-width: 1024px) {
+  .quality { grid-template-columns: minmax(0, 1fr); }
+  .q-side { position: static; }
+  .quality .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: var(--space-4); }
+  .quality .t-top .seven { width: 120px; }
+}
+
+/* Phones and portrait tablets: stack the pinned DIKW stage, pyramid above the text. */
+@media (max-width: 760px), (max-width: 1024px) and (orientation: portrait) {
   .dikw .stage { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; align-items: start; gap: var(--space-3); padding-top: 104px; padding-bottom: var(--space-3); }
-  .dikw .scene { order: -1; height: 30vh; overflow: hidden; align-items: flex-end; padding-bottom: 4px; }
-  .dikw .pyr { width: min(214px, 54vw, 23vh); }
-  .dikw .steps { height: calc(70vh - 130px); }
-  .dikw .steps-head { font-size: 20px; max-width: none; }
-  .dikw .step { top: 92px; gap: var(--space-2); }
-  .dikw .step .plus { font-size: 28px; }
-  .dikw .step p { font-size: 15.5px; line-height: 1.45; }
-  .dikw .step.intro p { font-size: 17px; }
+  .dikw .scene { order: -1; height: 34vh; overflow: hidden; align-items: flex-end; padding-bottom: 4px; }
+  .dikw .rail { top: 6%; bottom: 6%; }
+  .dikw .pyr { width: min(340px, 44vw, 24vh); margin-right: clamp(80px, 22vw, 150px); }
+  .dikw .layer > span { font-size: clamp(12px, 1.8vw, 17px); padding-left: 26px; }
+  .dikw .layer > span::before { left: 4px; width: 16px; }
+  .dikw .steps { height: auto; flex: 1; min-height: 0; }
+  .dikw .steps-head { font-size: clamp(20px, 3.6vw, 32px); max-width: none; }
+  .dikw .progress { margin-top: var(--space-3); max-width: 240px; }
+  .dikw .progress i { height: 6px; }
+  .dikw .stack { margin-top: var(--space-4); }
+  .dikw .step { gap: var(--space-2); }
+  .dikw .step .plus { font-size: clamp(28px, 5.4vw, 48px); }
+  .dikw .step p { font-size: clamp(15.5px, 2.3vw, 19px); line-height: 1.45; max-width: 52ch; }
+  .dikw .step.intro p { font-size: clamp(17px, 2.6vw, 22px); max-width: 44ch; }
   .dikw .chip { font-size: 11px; }
-  .erd { padding: var(--space-2); overflow-x: auto; overscroll-behavior-x: contain; max-width: 100%; min-width: 0; }
-  .erd img { max-width: none; width: 720px; }
-  .dikw [data-layer="3"] > span { font-size: 9px; bottom: 4%; letter-spacing: -.02em; }
+}
+
+@media (max-width: 760px) {
+  /* Inline offsets are for desktop; phones line the two records up under the nav. */
+  .hero { min-height: 0; padding-top: 372px; }
+  .hero .float.rec { width: 156px; padding: var(--space-3); gap: 5px; font-size: 12px; }
+  .hero .float.rec b { font-size: 13px; padding-bottom: 6px; }
+  .hero .float.rec span::before { width: 10px; height: 5px; }
+  .hero .float.rec.cust { top: 112px; right: 20px !important; }
+  .hero .float.rec.sale { top: 128px; right: auto !important; left: 20px; width: 148px; }
+  .hero .float.key.dark { top: 300px; right: 28px !important; font-size: 15px; }
+  .hero .float.key.tag { top: 292px; right: auto !important; left: 56%; font-size: 17px; }
+  .quality .test { padding: var(--space-4) var(--space-4) var(--space-6); }
+  .quality .test li { font-size: 16px; }
+  .quality .test li b { font-size: 18px; }
+  .pedagogy .ped-card { padding: var(--space-4); }
+  .pedagogy .ped-card p { font-size: 17px; }
 }
 
 /* Start states for the scroll animations. Scoped to .js so the page still
@@ -102,6 +188,20 @@
 .js .dikw .rail > div { transform: scaleY(0); }
 html:not(.js) .dikw { height: auto; }
 html:not(.js) .dikw .stage { position: static; height: auto; grid-template-columns: minmax(0, 1fr); }
-html:not(.js) .dikw .steps { height: auto; display: flex; flex-direction: column; gap: var(--space-8); }
+html:not(.js) .dikw .steps, html:not(.js) .dikw .stack { height: auto; display: flex; flex-direction: column; gap: var(--space-8); }
 html:not(.js) .dikw .step, html:not(.js) .dikw .steps-head { position: static; }
-html:not(.js) .dikw .scene { display: none; }
+html:not(.js) .dikw .scene, html:not(.js) .dikw .progress { display: none; }
+
+/* Portrait tablets: the hero would otherwise leave a tall empty band. */
+@media (min-width: 761px) and (max-width: 1024px) and (orientation: portrait) {
+  .hero { min-height: 72vh; }
+}
+@media (min-width: 761px) and (max-width: 1024px) and (orientation: portrait) {
+  .dikw .scene { height: 52vh; }
+  .dikw .pyr { width: min(460px, 54vw, 40vh); }
+  .dikw .layer > span { font-size: 18px; }
+}
+/* The active layer sits forward in 3D, so its name steps out a little further. */
+.dikw .layer.on > span { left: calc(var(--x) + 16px); }
+/* Small stages: ten loose field names are plenty. */
+@media (max-width: 760px), (max-width: 1024px) and (orientation: portrait) { .dikw .pyr > .chip:nth-child(n+14) { display: none; } }
