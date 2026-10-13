@@ -70,13 +70,9 @@
 .erd-section .tables { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: var(--space-6); }
 .erd-section .tables li { font-size: 17px; line-height: 1.5; padding: var(--space-4) 20px; background: var(--color-neutral-100); box-shadow: var(--shadow-sm); }
 .erd-section .tables b { font-weight: 600; color: var(--color-accent-700); }
-.erd { display: flex; align-items: flex-start; }
-.erd .entity { flex: 1 1 0; min-width: 0; padding: var(--space-3) var(--space-4); background: var(--color-neutral-100); box-shadow: var(--shadow-md); display: flex; flex-direction: column; gap: 4px; }
-.erd .entity b { font-weight: 600; font-size: 18px; margin-bottom: 4px; }
-.erd .entity span { font-size: 14px; color: var(--color-neutral-700); display: flex; gap: 6px; align-items: baseline; overflow-wrap: anywhere; }
-.erd .entity i { font-style: normal; font-size: 11px; font-weight: 600; color: var(--color-accent-2-700); }
-.erd .link { flex: none; width: clamp(36px, 5vw, 64px); height: 28px; margin-top: 18px; color: var(--color-accent); }
-.erd .link.flip { transform: scaleX(-1); }
+.erd { margin: 0; padding: var(--space-4); background: var(--color-neutral-100); box-shadow: var(--shadow-md); }
+.erd img { display: block; max-width: 100%; height: auto; }
+.erd:focus-visible { outline: 2px solid var(--color-accent-700); outline-offset: 3px; }
 .erd-notes { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: var(--space-6); font-size: 18px; line-height: 1.5; }
 .erd-notes b { font-weight: 600; }
 
@@ -96,10 +92,9 @@
   .dikw .step p { font-size: 15.5px; line-height: 1.45; }
   .dikw .step.intro p { font-size: 17px; }
   .dikw .chip { font-size: 11px; }
+  .erd { padding: var(--space-2); overflow-x: auto; overscroll-behavior-x: contain; max-width: 100%; min-width: 0; }
+  .erd img { max-width: none; width: 720px; }
   .dikw [data-layer="3"] > span { font-size: 9px; bottom: 4%; letter-spacing: -.02em; }
-  .erd { flex-direction: column; align-items: stretch; }
-  .erd .link { align-self: center; margin: 0; width: 40px; height: 40px; transform: rotate(90deg); }
-  .erd .link.flip { transform: rotate(-90deg); }
 }
 
 /* Start states for the scroll animations. Scoped to .js so the page still

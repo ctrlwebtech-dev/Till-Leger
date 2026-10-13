@@ -11,7 +11,7 @@
     ['Topic 2: Data Ethics, Privacy and Compliance with POPIA', ['Data Ethics and POPIA', 'CIA Triad', 'The AAA Model', 'POPIA Compliance Integration', 'Security and Access Control (CIA & AAA)']],
     ['Topic 3: Artificial Intelligence and Decision Support Systems', ['The Analytics Maturity Ladder', 'Decision Support Systems', 'Balancing Algorithmic Systems with Human Retail Intuition', 'Herbert Simon’s Decision-Making Process']],
     ['Topic 4: Enterprise Systems and Integration Issues', ['POS Cloud System Integration', 'The Integrated Process', 'Physical Servers (On premises) vs. Cloud Software (SaaS)']],
-    ['Topic 5: Modification of Information Systems', ['Design and Pedagogy of Reasoning']]
+    ['Topic 5: Adapting and customising information systems', ['Why off-the-shelf software never fits perfectly', 'The spectrum of tailoring choices', 'Why customisation costs more later', 'APIs: customising without touching the code', 'Using the SDLC to manage the change', 'The South African picture', 'Design and Pedagogy of Reasoning']]
   ];
 
   let preview = null, pk = null, pl = null, hov = null, pop = 0;

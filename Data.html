@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Topic 1: Data and Information Management · Till &amp; Ledger</title>
+<title>Topic 1: Data and Information Management · Till &amp; Leger</title>
 <meta name="description" content="Topic 1 was chosen to show non-technical owners how transactional data gets transformed using the DIKW paradigm into retail knowledge.">
 <script>document.documentElement.classList.add('js');</script>
 <link rel="icon" href="data:,">
@@ -15,7 +15,7 @@
 <div class="page" data-page>
 
 <nav class="site-nav" aria-label="Main">
-  <a class="brand" href="Till and Ledger.html">Till <span>&amp;</span> Ledger</a>
+  <a class="brand" href="Till and Ledger.html">Till <span>&amp;</span> Leger</a>
   <div class="links">
     <a href="Data.html" aria-current="page"><small>01</small>Data</a>
     <a href="POPIA.html"><small>02</small>POPIA</a>
@@ -121,33 +121,15 @@
     <h2 id="erd-h">Entity Relationship Diagram</h2>
     <p>The ERD is uniquely designed for the SME retail sales and inventory management system with four relational tables.</p>
   </div>
+  <figure class="erd" data-reveal="1" tabindex="0" aria-labelledby="erd-h">
+    <img src="assets/erd.png" width="1138" height="643" alt="Entity Relationship Diagram" loading="lazy">
+  </figure>
   <ul class="tables">
     <li data-reveal="1"><span class="dot" aria-hidden="true">•</span> The <b>CUSTOMER</b> table contains key customer information for loyalty tracking and marketing purposes. The table has customer_id as the Primary Key (PK), and full_name, email, phone, marketing_consent (for POPIA compliance), and loyalty_points.</li>
     <li data-reveal="1"><span class="dot" aria-hidden="true">•</span> The <b>SALE</b> table contains data about each separate transaction made. It has sale_id as the PK, and sale_datetime, payment_method, and total_amount. The table has customer_id as a Foreign Key (FK) linking it back to the CUSTOMER table.</li>
     <li data-reveal="1"><span class="dot" aria-hidden="true">•</span> The <b>Product</b> table acts as the active inventory database for the retail shop. Product_id is the PK in this table, which is also assisted by product_name, category, unit price, stock on hand, reorder level, and supplier information.</li>
     <li data-reveal="1"><span class="dot" aria-hidden="true">•</span> The <b>Line_Item</b> table acts as the junction table solving the many-to-many relationship between sales and products. Line_id is the PK in this table, whereas sale_id and product_id serve as the FKs.</li>
   </ul>
-  <div class="erd" data-reveal="1" aria-hidden="true">
-    <div class="entity e-customer">
-      <b>CUSTOMER</b>
-      <span><i>PK</i>customer_id</span><span>full_name</span><span>email</span><span>phone</span><span>marketing_consent</span><span>loyalty_points</span>
-    </div>
-    <svg class="link l1" viewBox="0 0 64 28"><use href="#crowsfoot"/></svg>
-    <div class="entity e-sale">
-      <b>SALE</b>
-      <span><i>PK</i>sale_id</span><span><i>FK</i>customer_id</span><span>sale_datetime</span><span>payment_method</span><span>total_amount</span>
-    </div>
-    <svg class="link l2" viewBox="0 0 64 28"><use href="#crowsfoot"/></svg>
-    <div class="entity e-line">
-      <b>Line_Item</b>
-      <span><i>PK</i>Line_id</span><span><i>FK</i>sale_id</span><span><i>FK</i>product_id</span>
-    </div>
-    <svg class="link l3 flip" viewBox="0 0 64 28"><use href="#crowsfoot"/></svg>
-    <div class="entity e-product">
-      <b>Product</b>
-      <span><i>PK</i>Product_id</span><span>product_name</span><span>category</span><span>unit price</span><span>stock on hand</span><span>reorder level</span><span>supplier information</span>
-    </div>
-  </div>
   <p class="erd-notes">
     <span data-reveal="1">The one-to-many connector from <b>Customer</b> to <b>Sale</b> suggests that a customer can make zero or multiple sales in the future; however, a sale belongs to one and only one customer.</span>
     <span data-reveal="1">Similarly, the one-to-many connector from <b>Sale</b> to <b>Line Item</b> shows one sale can contain one or many line items (products bought during the sale).</span>
@@ -169,23 +151,12 @@
     <a class="next" href="POPIA.html"><span class="dir">Next →</span><span class="label">Topic 2: Data Ethics, Privacy and Compliance with POPIA</span></a>
   </div>
   <div class="colophon">
-    <span>Till &amp; Ledger · INF1781 · Group A · 2026</span>
+    <span><span>Till &amp; Leger</span> · <span>INF181 Group A: SME</span></span>
     <a href="Sources.html">References</a>
   </div>
 </footer>
 
 </div>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="crowsfoot" viewBox="0 0 64 28">
-    <g stroke="currentColor" stroke-width="1.5">
-      <line x1="0" y1="14" x2="64" y2="14"/>
-      <line x1="8" y1="6" x2="8" y2="22"/>
-      <line x1="50" y1="14" x2="64" y2="4"/>
-      <line x1="50" y1="14" x2="64" y2="24"/>
-    </g>
-  </symbol>
-</svg>
 
 <script src="assets/motion.js"></script>
 <script src="assets/data.js"></script>

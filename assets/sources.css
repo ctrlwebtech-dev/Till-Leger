@@ -40,7 +40,10 @@
 
 /* References: hanging indent, long URLs wrap anywhere. */
 .refs { list-style: none; margin: 0; padding: 0; max-width: 900px; display: flex; flex-direction: column; gap: var(--space-4); }
-.refs li { font-size: 18px; line-height: 1.55; padding-left: 2em; text-indent: -2em; overflow-wrap: anywhere; }
+.refs li { font-size: 18px; line-height: 1.55; padding-left: 2em; text-indent: -2em; overflow-wrap: break-word; text-wrap: pretty; }
+/* Long URLs break anywhere and sit a step smaller so they do not swamp the entry. */
+.refs a.url { font-size: .82em; overflow-wrap: anywhere; word-break: break-word; color: var(--color-neutral-700); text-underline-offset: 2px; }
+.refs a.url:hover { color: var(--color-accent); }
 
 @media (max-width: 760px) {
   .src-hero { padding-top: 150px; }
@@ -48,5 +51,6 @@
   .src-table tbody th { width: 38%; }
   .src-table .name { font-size: 17px; }
   .src-table td { font-size: 15px; }
-  .refs li { font-size: 16px; }
+  .refs li { font-size: 16px; padding-left: 1.25em; text-indent: -1.25em; }
+  .refs a.url { font-size: .75em; }
 }

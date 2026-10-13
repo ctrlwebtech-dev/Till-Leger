@@ -4,7 +4,8 @@
 .home-hero { min-height: 100vh; padding-top: clamp(112px, 15vh, 180px); }
 .home-hero .hero-copy { position: relative; z-index: 5; max-width: 1400px; display: flex; flex-direction: column; gap: var(--space-6); }
 .home-hero .byline { order: -1; margin-bottom: calc(var(--space-6) * -1 + var(--space-4)); }
-.home-hero h1 { font-size: clamp(44px, min(5.6vw, 9vh), 104px); }
+.home-hero h1 { font-size: clamp(64px, min(12.5vw, 24vh), 232px); font-weight: 700; letter-spacing: -.04em; }
+.home-hero h1 .amp { font-style: italic; font-weight: 400; color: var(--color-accent); }
 @media (min-width: 761px) { .home-hero .hero-copy { max-width: min(1400px, 70vw); } }
 .home-hero h1 .mask > span { text-wrap: balance; }
 .home-hero .cta { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-2); }
@@ -128,7 +129,7 @@
   .home-hero .stamp { right: 8vw !important; width: 104px; height: 104px; font-size: 11px; }
   .home-hero .note { right: auto !important; left: 6vw; --top: 15vh !important; width: 150px; font-size: 15px; }
   .home-hero .ink { right: 6vw !important; --top: 38vh !important; font-size: 13px; max-width: 70vw; white-space: normal; }
-  .home-hero h1 { font-size: clamp(36px, 10.5vw, 56px); }
+  .home-hero h1 { font-size: clamp(48px, 17vw, 96px); }
 
   .ladder .stage { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; align-items: start; gap: var(--space-4); padding-top: 112px; padding-bottom: var(--space-4); }
   .ladder .side { flex-direction: row; align-items: center; justify-content: space-between; gap: var(--space-4); }

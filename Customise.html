@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Topic 5: Modification of Information Systems · Till &amp; Ledger</title>
-<meta name="description" content="To make the process of adapting their systems easier for the owners, this topic was organized according to the System Development Life Cycle (SDLC).">
+<title>Topic 5: Adapting and customising information systems · Till &amp; Leger</title>
+<meta name="description" content="A small retailer should configure first, add bolt-ons next, connect systems after that and change code last.">
 <script>document.documentElement.classList.add('js');</script>
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="assets/broadsheet.css">
@@ -15,7 +15,7 @@
 <div class="page" data-page>
 
 <nav class="site-nav" aria-label="Main">
-  <a class="brand" href="Till and Ledger.html">Till <span>&amp;</span> Ledger</a>
+  <a class="brand" href="Till and Ledger.html">Till <span>&amp;</span> Leger</a>
   <div class="links">
     <a href="Data.html"><small>01</small>Data</a>
     <a href="POPIA.html"><small>02</small>POPIA</a>
@@ -29,27 +29,129 @@
 <main>
 <header class="hero custom-hero gutter">
   <div class="float panel" aria-hidden="true" data-depth="0.7" data-rot="-5" data-speed="0.3" style="--top:16vh;right:9vw">
-    <b>API</b>
-    <span>POS</span>
-    <span>ecommerce</span>
+    <b>Configuration</b>
+    <span>lay-by</span>
+    <span>VAT rate</span>
+    <span>product categories</span>
   </div>
-  <div class="float soft" aria-hidden="true" data-depth="1.3" data-rot="7" data-speed="0.6" style="--top:44vh;right:30vw">SDLC</div>
-  <div class="float dark" aria-hidden="true" data-depth="1.8" data-rot="-8" data-speed="0.9" style="--top:64vh;right:8vw">checklist</div>
+  <div class="float soft" aria-hidden="true" data-depth="1.3" data-rot="7" data-speed="0.6" style="--top:13vh;right:40vw">Manager approval for refunds above R500</div>
+  <div class="float dark" aria-hidden="true" data-depth="1.8" data-rot="-8" data-speed="0.9" style="--top:60vh;right:8vw">SaaS</div>
+  <div class="float tag" aria-hidden="true" data-depth="1.1" data-rot="4" data-speed="0.45" style="--top:31vh;right:47vw">API</div>
   <h1>
     <span class="mask"><span data-line="0">Topic 5:</span></span>
-    <span class="mask"><span data-line="1">Modification of</span></span>
-    <span class="mask"><span data-line="2" class="it">Information Systems</span></span>
+    <span class="mask"><span data-line="1">Adapting and customising</span></span>
+    <span class="mask"><span data-line="2" class="it">information systems</span></span>
   </h1>
+  <p class="lede" data-reveal="1">A small retailer should configure first, add bolt-ons next, connect systems after that and change code last. A settings change costs nothing when the vendor upgrades. Custom code and new workflows are different. Someone has to check them after every new version, and often rebuild them (Light, 2001).</p>
 </header>
+
+<section class="misfit gutter" aria-labelledby="misfit-h">
+  <div class="section-head" data-reveal="1">
+    <h2 id="misfit-h">Why off-the-shelf software <span class="it">never fits perfectly</span></h2>
+  </div>
+  <div class="misfit-body" data-reveal="1">
+    <p>Vendors design packaged software around a typical shop. No real store trades exactly like that, and the gap between the two is called a misfit (Soh, Kien and Tay-Yap, 2000). Misfit isn’t the whole story, though. Light (2005) found that staff who miss the old screens, and managers attached to familiar processes, also push for changes. Before approving any change, the owner should ask a blunt question. Is the software wrong, or do people just miss the old way? For a South African retailer, the real misfits tend to be lay-by sales, split cash-and-card payments, loyalty points and VAT reports laid out the way the accountant wants them.</p>
+    <div class="chips" aria-hidden="true">
+      <span class="chip">lay-by sales</span>
+      <span class="chip">split cash-and-card payments</span>
+      <span class="chip">loyalty points</span>
+      <span class="chip">VAT reports</span>
+    </div>
+  </div>
+</section>
+
+<section class="spectrum gutter" data-spectrum aria-labelledby="spectrum-h">
+  <div class="section-head" data-reveal="1">
+    <h2 id="spectrum-h">The spectrum of <span class="it">tailoring choices</span></h2>
+    <p>Brehm, Heinzl and Markus (2001) list nine ways to tailor a packaged system, from light settings changes to rewriting the vendor’s code. The upgrade-risk ratings are our own judgement for a small retailer.</p>
+    <p>The first four rarely need a programmer. The rest usually do, and most small shops don’t have one.</p>
+  </div>
+  <div class="chart" aria-hidden="true">
+    <div class="axis"><span>None</span><span>Very high</span></div>
+    <div class="cols">
+      <div class="col easy" style="--v:.06"><span class="bar"></span><span class="name">Configuration</span></div>
+      <div class="col easy" style="--v:.3"><span class="bar"></span><span class="name">Bolt-on</span></div>
+      <div class="col easy" style="--v:.3"><span class="bar"></span><span class="name">Screen masks</span></div>
+      <div class="col easy" style="--v:.3"><span class="bar"></span><span class="name">Extended reporting</span></div>
+      <div class="col" style="--v:.55"><span class="bar"></span><span class="name">Workflow programming</span></div>
+      <div class="col" style="--v:.55"><span class="bar"></span><span class="name">User exits</span></div>
+      <div class="col" style="--v:.8"><span class="bar"></span><span class="name">ERP programming</span></div>
+      <div class="col" style="--v:.55"><span class="bar"></span><span class="name">Interface development</span></div>
+      <div class="col" style="--v:1"><span class="bar"></span><span class="name">Code modification</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="later gutter" aria-labelledby="later-h">
+  <div class="section-head" data-reveal="1">
+    <h2 id="later-h">Why customisation <span class="it">costs more later</span></h2>
+    <p>Every customisation adds maintenance work. After each vendor upgrade, someone has to re-test it and sometimes rewrite it (Light, 2001). Luo and Strong (2004) frame the decision as a choice between changing the system and changing the business process. For a shop with no IT staff, changing the process is usually cheaper.</p>
+    <p>Cloud POS, sold as software as a service or SaaS, narrows the options. The vendor runs one copy of the software for every customer, so nobody can touch its code. Custom programs can only use what the vendor’s API exposes. That sounds limiting, but it protects the owner. Updates arrive on their own, and little breaks when changes stay within configuration, bolt-ons and API links. Little is not nothing. Vendors retire old API versions, and a link built on one can stop working overnight.</p>
+  </div>
+  <div class="table-wrap" data-reveal="1">
+    <table class="tailor">
+      <thead>
+        <tr><th scope="col">Tailoring option</th><th scope="col">What it means</th><th scope="col">Retail example</th><th scope="col">Upgrade risk</th></tr>
+      </thead>
+      <tbody>
+        <tr data-risk="0"><th scope="row">Configuration</th><td>Use the built-in settings</td><td>Turn on lay-by, set the VAT rate, create product categories</td><td class="risk"><div class="risk-in"><span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span>None</span></div></td></tr>
+        <tr data-risk="1"><th scope="row">Bolt-on</th><td>Add a third-party product that runs alongside</td><td>A loyalty app from the POS vendor's app store</td><td class="risk"><div class="risk-in"><span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span>Low</span></div></td></tr>
+        <tr data-risk="1"><th scope="row">Screen masks</th><td>Change how screens look</td><td>Hide unused fields on the till screen</td><td class="risk"><div class="risk-in"><span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span>Low</span></div></td></tr>
+        <tr data-risk="1"><th scope="row">Extended reporting</th><td>Build new reports from existing data</td><td>A weekly slow-movers report</td><td class="risk"><div class="risk-in"><span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span>Low</span></div></td></tr>
+        <tr data-risk="2"><th scope="row">Workflow programming</th><td>Add new approval or process steps</td><td>Manager approval for refunds above R500</td><td class="risk"><div class="risk-in"><span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span>Medium</span></div></td></tr>
+        <tr data-risk="2"><th scope="row">User exits</th><td>Plug custom code into hooks the vendor provides</td><td>Run a check before a discount is applied</td><td class="risk"><div class="risk-in"><span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span>Medium</span></div></td></tr>
+        <tr data-risk="3"><th scope="row">ERP programming</th><td>Write new programs that use the system's data</td><td>A custom stock-take tool</td><td class="risk"><div class="risk-in"><span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span>High</span></div></td></tr>
+        <tr data-risk="2"><th scope="row">Interface development</th><td>Build links to other systems</td><td>Send POS sales to the accounting package</td><td class="risk"><div class="risk-in"><span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span>Medium, lower with a published API</span></div></td></tr>
+        <tr data-risk="4"><th scope="row">Code modification</th><td>Change the vendor's source code</td><td>Rewrite how the till deducts stock</td><td class="risk"><div class="risk-in"><span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span>Very high, and impossible on SaaS</span></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="api gutter" data-api aria-labelledby="api-h">
+  <div class="section-head" data-reveal="1">
+    <h2 id="api-h">APIs: customising <span class="it">without touching the code</span></h2>
+    <p>An application programming interface, or API, is a published set of rules that lets one program request data from another or send data to it. Ofoeda, Boateng and Effah (2019) describe APIs as a main route for systems to share data and services. Khanyi et al. (2024) found that APIs make SMEs more efficient by linking systems that used to run separately. In a store, the cloud POS can send daily sales to the accounting package, push stock levels to the online shop and pull loyalty balances into the till. Nobody changes the POS to do it. If the store switches accounting packages later, only the link changes.</p>
+  </div>
+  <div class="links-diag" aria-hidden="true">
+    <div class="hub"><span>cloud POS</span></div>
+    <div class="link"><span class="wire"><i class="pkt" data-pkt="1"></i><em>daily sales</em></span><span class="node">accounting package</span></div>
+    <div class="link"><span class="wire"><i class="pkt" data-pkt="1"></i><em>stock levels</em></span><span class="node">online shop</span></div>
+    <div class="link in"><span class="wire"><i class="pkt" data-pkt="-1"></i><em>loyalty balances</em></span><span class="node">the till</span></div>
+  </div>
+</section>
+
+<section class="sdlc gutter" data-sdlc aria-labelledby="sdlc-h">
+  <div class="sdlc-side">
+    <div class="section-head" data-reveal="1">
+      <h2 id="sdlc-h">Using the SDLC <span class="it">to manage the change</span></h2>
+      <p>We use six phases of the systems development life cycle, or SDLC, to keep the change under control.</p>
+    </div>
+    <div class="progress" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+  <ol class="phases">
+    <li class="phase" data-phase><span class="box" aria-hidden="true"></span><p><span class="lab"><span class="n">1.</span> Planning.</span> State the problem in business terms, such as “stock counts never match the till”. Set a budget and a go-live date.</p></li>
+    <li class="phase" data-phase><span class="box" aria-hidden="true"></span><p><span class="lab"><span class="n">2.</span> Analysis.</span> Run a fit-gap check. Mark each current process as a fit, a gap that settings can close, or a gap that needs more. Kruger (2012) treats this as aligning the package with the business.</p></li>
+    <li class="phase" data-phase><span class="box" aria-hidden="true"></span><p><span class="lab"><span class="n">3.</span> Design.</span> Close each gap with the lightest option on the spectrum. Configuration comes first, then bolt-ons, then API links.</p></li>
+    <li class="phase" data-phase><span class="box" aria-hidden="true"></span><p><span class="lab"><span class="n">4.</span> Testing.</span> Ring up test sales, a refund, a lay-by and an offline sale during load-shedding. Check that stock levels and accounting totals match. Fix what doesn’t and test again.</p></li>
+    <li class="phase" data-phase><span class="box" aria-hidden="true"></span><p><span class="lab"><span class="n">5.</span> Implementation.</span> Import clean product and customer data and train staff. Then run the old and new systems side by side for one to two weeks, and have the manager compare totals every day. We prefer this to a pilot or a direct cut-over. A shop with two or three tills learns little from a pilot, and a cut-over leaves nothing to fall back on if the totals go wrong. A short spell of double capturing is cheaper than untangling a failed changeover.</p></li>
+    <li class="phase" data-phase><span class="box" aria-hidden="true"></span><p><span class="lab"><span class="n">6.</span> Maintenance.</span> Read the vendor’s update notes, check each API link after every update and cancel add-ons nobody uses. With no IT staff, the owner should choose the vendor’s support as carefully as the software.</p></li>
+  </ol>
+</section>
+
+<section class="sa gutter" aria-labelledby="sa-h">
+  <div class="section-head" data-reveal="1">
+    <h2 id="sa-h">The South African <span class="it">picture</span></h2>
+    <p>Faasen, Seymour and Schuler (2013) found that South African SMEs weigh the low upfront cost of SaaS ERP against depending on the vendor and the internet. Jacobs and Kabaso (2025) found that SMEs use only part of the ERP features they pay for, and that firms using more of them report a stronger competitive advantage. Our retailer should get full use out of the standard features before paying for anything custom. Akerejola et al. (2019) linked POS adoption among Nigerian SMEs to reliable power and network access. Load-shedding gives South African shops the same problem. That is why Topic 2 calls for a POS that trades offline and syncs later.</p>
+  </div>
+</section>
 
 <section class="pedagogy gutter" aria-labelledby="pedagogy-h">
   <div class="section-head" data-reveal="1">
     <h2 id="pedagogy-h">Design and Pedagogy <span class="it">of Reasoning</span></h2>
-    <p>It is quite common for small businesses to fall into the trap of over-customizing an existing but inflexible software package or trying to develop a completely customized software solution on their own.</p>
   </div>
-  <div class="card elev-lg sdlc" data-reveal="1">
-    <p>To make the process of adapting their systems easier for the owners, this topic was organized according to the System Development Life Cycle (SDLC).</p>
-    <p class="pull">Through the discussion of an API-based checklist, retail managers are shown how they can customize the existing POS and ecommerce platforms to match their own processes.</p>
+  <div class="card elev-lg ped-card" data-reveal="1">
+    <p>It is quite common for small businesses to fall into the trap of over-customizing an existing but inflexible software package or trying to develop a completely customized software solution on their own. To make the process of adapting their systems easier for the owners, this topic was organized according to the System Development Life Cycle (SDLC). Through the discussion of an API-based checklist, retail managers are shown how they can customize the existing POS and ecommerce platforms to match their own processes.</p>
   </div>
 </section>
 </main>
@@ -60,7 +162,7 @@
     <a class="next" href="Sources.html"><span class="dir">Next →</span><span class="label">References</span></a>
   </div>
   <div class="colophon">
-    <span>Till &amp; Ledger · INF1781 · Group A · 2026</span>
+    <span><span>Till &amp; Leger</span> · <span>INF181 Group A: SME</span></span>
     <a href="Sources.html">References</a>
   </div>
 </footer>
