@@ -252,6 +252,9 @@
     b.addEventListener('pointerenter', e => { if (e.pointerType !== 'touch') setHot(b.dataset.ref); });
     b.addEventListener('pointerleave', () => { if (hot === b.dataset.ref) setHot(null); });
   });
+  // Focus scrolls the clipped window to the plate on phones; the camera does
+  // that job, so the window itself never keeps a scroll offset.
+  win.addEventListener('scroll', () => { if (win.scrollLeft || win.scrollTop) { win.scrollLeft = 0; win.scrollTop = 0; } });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && hot) setHot(null); });
   document.addEventListener('pointerdown', e => { if (hot && !sheet.contains(e.target)) setHot(null); });
 
@@ -383,15 +386,20 @@
     if (phone.matches) {
       const st = Math.min(8, Math.floor(pp + 0.1));
       let rect = { x: 0, y: 0, w: 760, h: 560 };
-      if (st >= 1 && st <= 4) {
+      // A table focused from the keyboard gets the camera, so its ring shows.
+      const ft = hot && plate[hot] && document.activeElement === plate[hot] ? hot : null;
+      if (ft) {
+        const b = off(plate[ft]);
+        rect = { x: b.x - 16, y: b.y - 16, w: b.w + 32, h: b.h + 32 };
+      } else if (st >= 1 && st <= 4) {
         const t = TABLES.find(x => TABLE_STEP[x] === st), b = off(plate[t]);
         rect = { x: b.x - 16, y: b.y - 16, w: b.w + 32, h: b.h + 32 };
       } else if (st >= 5 && st <= 7) {
         const r = ['cs', 'sl', 'pl'][st - 5], g = GEO[r];
         const u = easeIO(cl((pp - st - .3) / .3)), A = g.camA, B = g.camB;
-        // Mid-pan the frame widens to hold both ends, so the camera never
-        // rests on an empty gutter between them.
-        const m = Math.sin(Math.PI * u), x0 = Math.min(A.x, B.x), y0 = Math.min(A.y, B.y);
+        // Mid-pan the frame widens to hold both ends whole, so the camera
+        // never rests on an empty gutter or a half table between them.
+        const m = Math.min(1, 2.5 * Math.sin(Math.PI * u)), x0 = Math.min(A.x, B.x), y0 = Math.min(A.y, B.y);
         const Uw = Math.max(A.x + A.w, B.x + B.w) - x0, Uh = Math.max(A.y + A.h, B.y + B.h) - y0;
         const lerp = (p, q, t) => p + (q - p) * t;
         rect = { x: lerp(lerp(A.x, B.x, u), x0, m), y: lerp(lerp(A.y, B.y, u), y0, m), w: lerp(lerp(A.w, B.w, u), Uw, m), h: lerp(lerp(A.h, B.h, u), Uh, m) };
