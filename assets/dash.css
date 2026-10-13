@@ -1,0 +1,60 @@
+/* Mock sales dashboard at the end of the Data page. */
+.dash { padding-top: clamp(60px, 10vh, 120px); padding-bottom: clamp(40px, 6vh, 80px); display: flex; flex-direction: column; gap: var(--space-6); }
+.dash-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+.dash-head h2 { margin: 0; font-size: clamp(34px, 4.4vw, 64px); line-height: 1.02; letter-spacing: -.02em; }
+.dash-tag { font-size: 13px; letter-spacing: .04em; color: var(--color-accent-2-700); border: 1px solid var(--color-accent-2-300); padding: 4px 10px; border-radius: 999px; }
+
+.dash-board { background: var(--color-neutral-100); box-shadow: var(--shadow-lg); padding: clamp(16px, 2.4vw, 32px); display: flex; flex-direction: column; gap: clamp(16px, 2vw, 28px); }
+
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.6vw, 20px); }
+.tile { font: inherit; color: inherit; text-align: left; display: flex; flex-direction: column; gap: 4px; padding: clamp(14px, 1.6vw, 22px); background: var(--color-bg); border: 1px solid var(--color-divider); border-top: 3px solid var(--color-accent); }
+.tile .t-label { font-size: 14px; color: var(--color-neutral-700); }
+.tile .t-value { font-size: clamp(30px, 3.4vw, 46px); font-weight: 600; line-height: 1.05; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.tile .t-delta { font-size: 13px; }
+.tile .up { color: var(--color-accent-700); }
+.tile .warn { color: var(--color-accent-2-700); }
+.tile-alert { border-top-color: var(--color-accent-2); cursor: pointer; transition: background .25s, box-shadow .25s; }
+.tile-alert:hover { background: var(--color-accent-2-100); }
+.tile-alert[aria-pressed="true"] { background: var(--color-accent-2-100); box-shadow: inset 0 0 0 1px var(--color-accent-2-300); }
+
+.dash-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: clamp(16px, 2vw, 28px); align-items: stretch; }
+.panel { margin: 0; background: var(--color-bg); border: 1px solid var(--color-divider); padding: clamp(14px, 1.8vw, 24px); display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; }
+.p-title { margin: 0; font-size: 18px; font-weight: 600; }
+.p-title span { font-weight: 400; font-size: 13px; color: var(--color-neutral-700); margin-left: 6px; }
+.p-note { margin: 0; font-size: 13px; font-style: italic; color: var(--color-accent-2-700); }
+
+.bars { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: clamp(6px, 1vw, 12px); height: 200px; }
+.bar { display: flex; flex-direction: column; gap: 6px; height: 100%; }
+.bar .col { flex: 1; display: flex; align-items: flex-end; }
+.bar .col > div { position: relative; width: 100%; height: 100%; background: var(--color-accent-300); transform-origin: bottom; }
+.bar.peak .col > div { background: var(--color-accent-2); }
+.bar b { position: absolute; left: 50%; bottom: 100%; transform: translate(-50%, -4px); font-size: 11px; font-weight: 600; color: var(--color-neutral-800); opacity: 0; transition: opacity .2s; white-space: nowrap; }
+.bar:hover b, .bar.peak b { opacity: 1; }
+.bar:hover .col > div { filter: brightness(.92); }
+.bar > span { font-size: 12px; text-align: center; color: var(--color-neutral-700); }
+/* motion.js scales bars by data-bar; without JS they sit at their value height. */
+html:not(.js) .bar .col > div { height: calc(var(--v) * 100%); }
+
+.stock table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.stock th, .stock td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--color-divider); }
+.stock thead th { font-size: 12px; font-weight: 600; letter-spacing: .04em; color: var(--color-neutral-700); border-bottom: 1.5px solid var(--color-text); }
+.stock tbody th { font-weight: 400; }
+.stock td { font-variant-numeric: tabular-nums; }
+.stock tr.low th { font-weight: 600; }
+.stock .flag { display: inline-block; font-size: 12px; font-weight: 600; color: var(--color-accent-2-800); background: var(--color-accent-2-100); padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.stock .ok { font-size: 12px; color: var(--color-accent-700); }
+.stock table.only-low tbody tr:not(.low) { display: none; }
+.stock tbody tr { transition: background .25s; }
+.stock table.only-low tbody tr.low { background: color-mix(in srgb, var(--color-accent-2-100) 60%, transparent); }
+
+@media (max-width: 900px) {
+  .dash-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .tiles { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .tile-alert { grid-column: 1 / -1; }
+  .bars { height: 160px; }
+  .stock table { font-size: 13px; }
+  .stock th, .stock td { padding: 8px 4px; }
+  .stock thead th:nth-child(3), .stock tbody td:nth-child(3) { display: none; }
+}

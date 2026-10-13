@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="assets/site.css?v=a3ca9510">
 <link rel="stylesheet" href="assets/data.css?v=2dc1046f">
 <link rel="stylesheet" href="assets/erd.css?v=6f7d16d1">
+<link rel="stylesheet" href="assets/dash.css?v=4b0be791">
 </head>
 <body>
 <div class="page" data-page>
@@ -282,6 +283,65 @@
     <p>Data mismanagement, such as data input errors in spreadsheets and inventory loss that is not accounted for, is the main issue that small retail organizations face in terms of operations. Topic 1 was chosen to show non-technical owners how transactional data gets transformed using the DIKW paradigm into retail knowledge. Also, using an ERD and sales dashboard, we show how relational database tables remove data redundancy and allow one to see stock levels instantly.</p>
   </div>
 </section>
+
+<!-- Mock sales dashboard: a visual prototype the group asked for. Its labels
+     and numbers are illustrative, not document text. -->
+<section class="dash gutter" data-dashboard aria-labelledby="dash-h">
+  <div class="dash-head" data-reveal="1">
+    <h2 id="dash-h">Sales dashboard</h2>
+    <span class="dash-tag">Prototype · mock data</span>
+  </div>
+
+  <div class="dash-board" data-reveal="1">
+    <div class="tiles">
+      <div class="tile">
+        <span class="t-label">Today’s sales</span>
+        <strong class="t-value">R18 420</strong>
+        <span class="t-delta up">▲ 12% vs last Friday</span>
+      </div>
+      <div class="tile">
+        <span class="t-label">Items sold</span>
+        <strong class="t-value">612</strong>
+        <span class="t-delta up">▲ 35% warm beverages</span>
+      </div>
+      <button class="tile tile-alert" type="button" aria-pressed="false" aria-controls="dash-stock">
+        <span class="t-label">Low-stock items</span>
+        <strong class="t-value">3</strong>
+        <span class="t-delta warn">Show reorder alerts</span>
+      </button>
+    </div>
+
+    <div class="dash-grid">
+      <figure class="panel chart" aria-labelledby="chart-h">
+        <figcaption id="chart-h" class="p-title">Sales by day <span>R thousand, this week</span></figcaption>
+        <div class="bars">
+          <div class="bar"><div class="col"><div data-bar="0.65" style="--v:.65"><b>11.2</b></div></div><span>Mon</span></div>
+          <div class="bar"><div class="col"><div data-bar="0.60" style="--v:.60"><b>10.4</b></div></div><span>Tue</span></div>
+          <div class="bar"><div class="col"><div data-bar="0.70" style="--v:.70"><b>12.1</b></div></div><span>Wed</span></div>
+          <div class="bar"><div class="col"><div data-bar="0.74" style="--v:.74"><b>12.8</b></div></div><span>Thu</span></div>
+          <div class="bar peak"><div class="col"><div data-bar="1" style="--v:1"><b>17.3</b></div></div><span>Fri</span></div>
+          <div class="bar"><div class="col"><div data-bar="0.92" style="--v:.92"><b>15.9</b></div></div><span>Sat</span></div>
+          <div class="bar"><div class="col"><div data-bar="0.55" style="--v:.55"><b>9.6</b></div></div><span>Sun</span></div>
+        </div>
+        <p class="p-note">Cold, rainy Friday: warm beverages up 35%</p>
+      </figure>
+
+      <div class="panel stock">
+        <h3 class="p-title">Stock levels</h3>
+        <table id="dash-stock">
+          <thead><tr><th scope="col">Product</th><th scope="col">On hand</th><th scope="col">Reorder level</th><th scope="col">Status</th></tr></thead>
+          <tbody>
+            <tr class="low"><th scope="row">Organic coffee beans 1kg</th><td>42</td><td>60</td><td><span class="flag">Reorder 300</span></td></tr>
+            <tr class="low"><th scope="row">Specialized baking flour 2.5kg</th><td>18</td><td>25</td><td><span class="flag">Reorder</span></td></tr>
+            <tr><th scope="row">Premium butter 500g</th><td>64</td><td>30</td><td><span class="ok">OK</span></td></tr>
+            <tr class="low"><th scope="row">Seasonal gift baskets</th><td>9</td><td>15</td><td><span class="flag">Reorder</span></td></tr>
+            <tr><th scope="row">Warm beverage sachets</th><td>140</td><td>50</td><td><span class="ok">OK</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer class="site-footer">
@@ -300,5 +360,6 @@
 <script src="assets/motion.js?v=2e4f1580"></script>
 <script src="assets/erd.js?v=a5cfa288"></script>
 <script src="assets/data.js?v=eaae8661"></script>
+<script src="assets/dash.js?v=62f0dc3e"></script>
 </body>
 </html>
